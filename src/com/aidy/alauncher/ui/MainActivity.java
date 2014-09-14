@@ -1,4 +1,6 @@
-package com.aidy.alauncher;
+package com.aidy.alauncher.ui;
+
+import com.aidy.alauncher.R;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,7 +12,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_launcher);
 	}
 
 	@Override

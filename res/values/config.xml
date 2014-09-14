@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+    <bool name="config_support_hardware_accelerated">true</bool>
+    <bool name="config_large_heap">true</bool>
+    <!-- Support RTL: Min API Level 17 -->
+    <bool name="config_support_right_to_left">false</bool>
+
+</resources>

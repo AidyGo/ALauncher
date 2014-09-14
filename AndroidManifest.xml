@@ -9,17 +9,22 @@
         android:targetSdkVersion="21" />
 
     <application
+        android:name="com.aidy.alauncher.ui.AppApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="@bool/config_support_hardware_accelerated"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="@bool/config_large_heap"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.aidy.alauncher.ui.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="adnroid.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.MONKEY" />
             </intent-filter>
         </activity>
     </application>
