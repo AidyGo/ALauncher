@@ -1,4 +1,0 @@
-ALauncher
-=========
-
-android launcher
