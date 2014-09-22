@@ -39,6 +39,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.bean.ItemInfoBean;
+import com.aidy.launcher3.support.utils.Utilities;
+import com.aidy.launcher3.ui.Launcher;
+import com.aidy.launcher3.ui.LauncherAppState;
+import com.aidy.launcher3.ui.LauncherAppWidgetHostView;
+import com.aidy.launcher3.ui.allapp.AppWidgetResizeFrame;
+import com.aidy.launcher3.ui.folder.Folder;
+import com.aidy.launcher3.ui.folder.FolderIcon;
+import com.aidy.launcher3.ui.workspace.Workspace;
 
 /**
  * A ViewGroup that coordinates dragging across its descendants
@@ -467,7 +476,7 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
         return mCurrentResizeFrame != null;
     }
 
-    public void addResizeFrame(ItemInfo itemInfo, LauncherAppWidgetHostView widget,
+    public void addResizeFrame(ItemInfoBean itemInfo, LauncherAppWidgetHostView widget,
             CellLayout cellLayout) {
         AppWidgetResizeFrame resizeFrame = new AppWidgetResizeFrame(getContext(),
                 widget, cellLayout, this);

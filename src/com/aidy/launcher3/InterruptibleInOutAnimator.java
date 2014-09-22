@@ -16,6 +16,8 @@
 
 package com.aidy.launcher3;
 
+import com.aidy.launcher3.ui.LauncherAnimUtils;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;

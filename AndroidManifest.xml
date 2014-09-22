@@ -68,14 +68,14 @@
     <uses-permission android:name="com.aidy.launcher3.permission.RECEIVE_LAUNCH_BROADCASTS" />
 
     <application
-        android:name="com.aidy.launcher3.LauncherApplication"
+        android:name="com.aidy.launcher3.ui.LauncherApplication"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher_home"
         android:label="@string/application_name"
         android:largeHeap="@bool/config_largeHeap"
         android:supportsRtl="true" >
         <activity
-            android:name="com.aidy.launcher3.Launcher"
+            android:name="com.aidy.launcher3.ui.Launcher"
             android:clearTaskOnLaunch="true"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor"
@@ -91,7 +91,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--         <activity
+        <!--
+             <activity
             android:name="com.aidy.launcher3.ToggleWeightWatcher"
             android:enabled="@bool/debug_memory_enabled"
             android:icon="@mipmap/ic_launcher_home"
@@ -102,9 +103,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> -->
+        </activity>
+        -->
         <activity
-            android:name="com.aidy.launcher3.WallpaperPickerActivity"
+            android:name="com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity"
             android:finishOnCloseSystemDialogs="true"
             android:icon="@mipmap/ic_launcher_wallpaper"
             android:label="@string/pick_wallpaper"
@@ -117,7 +119,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.aidy.launcher3.WallpaperCropActivity"
+            android:name="com.aidy.launcher3.ui.wallpaper.WallpaperCropActivityrCropActivity"
             android:finishOnCloseSystemDialogs="true"
             android:icon="@mipmap/ic_launcher_wallpaper"
             android:label="@string/crop_wallpaper"
@@ -155,7 +157,7 @@
 
         <!-- Intent received used to prepopulate the default workspace. -->
         <receiver
-            android:name="com.aidy.launcher3.PreloadReceiver"
+            android:name="com.aidy.launcher3.ui.receiver.PreloadReceiver"
             android:permission="com.aidy.launcher3.permission.PRELOAD_WORKSPACE" >
             <intent-filter>
                 <action android:name="com.aidy.launcher3.action.PRELOAD_WORKSPACE" />
@@ -173,7 +175,7 @@
 
         <!-- Intent received used to uninstall shortcuts from other applications -->
         <receiver
-            android:name="com.aidy.launcher3.UninstallShortcutReceiver"
+            android:name="com.aidy.launcher3.ui.receiver.UninstallShortcutReceiver"
             android:permission="com.aidy.launcher3.permission.UNINSTALL_SHORTCUT" >
             <intent-filter>
                 <action android:name="com.aidy.launcher3.action.UNINSTALL_SHORTCUT" />
@@ -182,13 +184,13 @@
 
         <!-- New user initialization; set up initial wallpaper -->
         <receiver
-            android:name="com.aidy.launcher3.UserInitializeReceiver"
+            android:name="com.aidy.launcher3.ui.receiver.UserInitializeReceiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="android.intent.action.USER_INITIALIZE" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.aidy.launcher3.PackageChangedReceiver" >
+        <receiver android:name="com.aidy.launcher3.ui.receiver.PackageChangedReceiverngedReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_CHANGED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
@@ -201,7 +203,7 @@
 
         <!-- The settings provider contains Home's data, like the workspace favorites -->
         <provider
-            android:name="com.aidy.launcher3.LauncherProvider"
+            android:name="com.aidy.launcher3.db.LauncherProvider"
             android:authorities="com.aidy.launcher3.settings"
             android:exported="true"
             android:readPermission="com.aidy.launcher3.permission.READ_SETTINGS"

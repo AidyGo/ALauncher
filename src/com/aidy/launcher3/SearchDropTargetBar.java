@@ -17,6 +17,10 @@
 package com.aidy.launcher3;
 
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.bean.DeviceProfile;
+import com.aidy.launcher3.ui.Launcher;
+import com.aidy.launcher3.ui.LauncherAnimUtils;
+import com.aidy.launcher3.ui.LauncherAppState;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

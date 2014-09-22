@@ -32,14 +32,14 @@
 
         <!-- The workspace contains 5 screens of cells -->
 
-        <com.aidy.launcher3.Workspace
+        <com.aidy.launcher3.ui.workspace.Workspace
             android:id="@+id/workspace"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             launcher:defaultScreen="@integer/config_workspaceDefaultScreen"
             launcher:pageIndicator="@id/page_indicator"
             launcher:pageSpacing="@dimen/workspace_page_spacing" >
-        </com.aidy.launcher3.Workspace>
+        </com.aidy.launcher3.ui.workspace.Workspace>
 
         <include
             android:id="@+id/hotseat"

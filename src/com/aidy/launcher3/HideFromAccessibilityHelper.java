@@ -22,6 +22,9 @@ import android.view.ViewGroup.OnHierarchyChangeListener;
 
 import java.util.HashMap;
 
+import com.aidy.launcher3.support.views.Cling;
+import com.aidy.launcher3.ui.allapp.AppsCustomizeTabHost;
+
 public class HideFromAccessibilityHelper implements OnHierarchyChangeListener {
     private HashMap<View, Integer> mPreviousValues;
     boolean mHide;

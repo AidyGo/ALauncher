@@ -14,7 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.aidy.launcher3.AppsCustomizeTabHost xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.ui.allapp.AppsCustomizeTabHost xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#80FFFFFF" >
 
     <LinearLayout
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <com.aidy.launcher3.AppsCustomizePagedView
+            <com.aidy.launcher3.ui.allapp.AppsCustomizePagedView
                 android:id="@+id/apps_customize_pane_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -83,4 +83,4 @@
         </FrameLayout>
     </LinearLayout>
 
-</com.aidy.launcher3.AppsCustomizeTabHost>
+</com.aidy.launcher3.ui.allapp.AppsCustomizeTabHost>

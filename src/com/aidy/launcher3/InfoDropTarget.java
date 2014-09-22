@@ -17,6 +17,11 @@
 package com.aidy.launcher3;
 
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.bean.AppInfoBean;
+import com.aidy.launcher3.bean.PendingAddItemInfo;
+import com.aidy.launcher3.bean.ShortcutInfo;
+import com.aidy.launcher3.ui.LauncherAppState;
+import com.aidy.launcher3.ui.allapp.AppsCustomizePagedView;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -74,8 +79,8 @@ public class InfoDropTarget extends ButtonDropTarget {
         // in onDrop, because it allows us to reject the drop (by returning false)
         // so that the object being dragged isn't removed from the drag source.
         ComponentName componentName = null;
-        if (d.dragInfo instanceof AppInfo) {
-            componentName = ((AppInfo) d.dragInfo).componentName;
+        if (d.dragInfo instanceof AppInfoBean) {
+            componentName = ((AppInfoBean) d.dragInfo).componentName;
         } else if (d.dragInfo instanceof ShortcutInfo) {
             componentName = ((ShortcutInfo) d.dragInfo).intent.getComponent();
         } else if (d.dragInfo instanceof PendingAddItemInfo) {

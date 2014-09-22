@@ -16,6 +16,8 @@
 
 package com.aidy.launcher3;
 
+import com.aidy.launcher3.support.views.pagedview.Page;
+
 import android.content.Context;
 import android.view.View;
 

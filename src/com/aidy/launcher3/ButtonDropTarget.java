@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.ui.Launcher;
 
 
 /**

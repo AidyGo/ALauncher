@@ -18,7 +18,7 @@
 */
 -->
 
-<com.aidy.launcher3.WallpaperRootView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.ui.wallpaper.WallpaperRootView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/wallpaper_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
@@ -88,4 +88,4 @@
             android:background="@drawable/tile_shadow_bottom" />
     </LinearLayout>
 
-</com.aidy.launcher3.WallpaperRootView>
+</com.aidy.launcher3.ui.wallpaper.WallpaperRootView>

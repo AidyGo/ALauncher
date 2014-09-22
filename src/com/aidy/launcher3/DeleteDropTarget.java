@@ -41,6 +41,20 @@ import java.util.List;
 import java.util.Set;
 
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.bean.AppInfoBean;
+import com.aidy.launcher3.bean.FolderInfoBean;
+import com.aidy.launcher3.bean.ItemInfoBean;
+import com.aidy.launcher3.bean.LauncherAppWidgetInfoBean;
+import com.aidy.launcher3.bean.PendingAddItemInfo;
+import com.aidy.launcher3.bean.ShortcutInfo;
+import com.aidy.launcher3.db.LauncherSettings;
+import com.aidy.launcher3.ui.LauncherAppState;
+import com.aidy.launcher3.ui.LauncherAppWidgetHost;
+import com.aidy.launcher3.ui.LauncherModel;
+import com.aidy.launcher3.ui.allapp.AllAppsList;
+import com.aidy.launcher3.ui.allapp.AppsCustomizePagedView;
+import com.aidy.launcher3.ui.folder.Folder;
+import com.aidy.launcher3.ui.workspace.Workspace;
 
 public class DeleteDropTarget extends ButtonDropTarget {
     private static int DELETE_ANIMATION_DURATION = 285;
@@ -97,7 +111,7 @@ public class DeleteDropTarget extends ButtonDropTarget {
     }
 
     private boolean isAllAppsApplication(DragSource source, Object info) {
-        return (source instanceof AppsCustomizePagedView) && (info instanceof AppInfo);
+        return (source instanceof AppsCustomizePagedView) && (info instanceof AppInfoBean);
     }
     private boolean isAllAppsWidget(DragSource source, Object info) {
         if (source instanceof AppsCustomizePagedView) {
@@ -119,10 +133,10 @@ public class DeleteDropTarget extends ButtonDropTarget {
         return isDragSourceWorkspaceOrFolder(d) && (d.dragInfo instanceof ShortcutInfo);
     }
     private boolean isWorkspaceOrFolderWidget(DragObject d) {
-        return isDragSourceWorkspaceOrFolder(d) && (d.dragInfo instanceof LauncherAppWidgetInfo);
+        return isDragSourceWorkspaceOrFolder(d) && (d.dragInfo instanceof LauncherAppWidgetInfoBean);
     }
     private boolean isWorkspaceFolder(DragObject d) {
-        return (d.dragSource instanceof Workspace) && (d.dragInfo instanceof FolderInfo);
+        return (d.dragSource instanceof Workspace) && (d.dragInfo instanceof FolderInfoBean);
     }
 
     private void setHoverColor() {
@@ -140,8 +154,8 @@ public class DeleteDropTarget extends ButtonDropTarget {
     }
 
     public static boolean willAcceptDrop(Object info) {
-        if (info instanceof ItemInfo) {
-            ItemInfo item = (ItemInfo) info;
+        if (info instanceof ItemInfoBean) {
+            ItemInfoBean item = (ItemInfoBean) info;
             if (item.itemType == LauncherSettings.Favorites.ITEM_TYPE_APPWIDGET ||
                     item.itemType == LauncherSettings.Favorites.ITEM_TYPE_SHORTCUT) {
                 return true;
@@ -154,16 +168,16 @@ public class DeleteDropTarget extends ButtonDropTarget {
 
             if (!AppsCustomizePagedView.DISABLE_ALL_APPS &&
                     item.itemType == LauncherSettings.Favorites.ITEM_TYPE_APPLICATION &&
-                    item instanceof AppInfo) {
-                AppInfo appInfo = (AppInfo) info;
-                return (appInfo.flags & AppInfo.DOWNLOADED_FLAG) != 0;
+                    item instanceof AppInfoBean) {
+                AppInfoBean appInfo = (AppInfoBean) info;
+                return (appInfo.flags & AppInfoBean.DOWNLOADED_FLAG) != 0;
             }
 
             if (item.itemType == LauncherSettings.Favorites.ITEM_TYPE_APPLICATION &&
                 item instanceof ShortcutInfo) {
                 if (AppsCustomizePagedView.DISABLE_ALL_APPS) {
                     ShortcutInfo shortcutInfo = (ShortcutInfo) info;
-                    return (shortcutInfo.flags & AppInfo.DOWNLOADED_FLAG) != 0;
+                    return (shortcutInfo.flags & AppInfoBean.DOWNLOADED_FLAG) != 0;
                 } else {
                     return true;
                 }
@@ -282,19 +296,19 @@ public class DeleteDropTarget extends ButtonDropTarget {
     }
 
     private void completeDrop(DragObject d) {
-        ItemInfo item = (ItemInfo) d.dragInfo;
+        ItemInfoBean item = (ItemInfoBean) d.dragInfo;
         boolean wasWaitingForUninstall = mWaitingForUninstall;
         mWaitingForUninstall = false;
         if (isAllAppsApplication(d.dragSource, item)) {
             // Uninstall the application if it is being dragged from AppsCustomize
-            AppInfo appInfo = (AppInfo) item;
+            AppInfoBean appInfo = (AppInfoBean) item;
             mLauncher.startApplicationUninstallActivity(appInfo.componentName, appInfo.flags);
         } else if (isUninstallFromWorkspace(d)) {
             ShortcutInfo shortcut = (ShortcutInfo) item;
             if (shortcut.intent != null && shortcut.intent.getComponent() != null) {
                 final ComponentName componentName = shortcut.intent.getComponent();
                 final DragSource dragSource = d.dragSource;
-                int flags = AppInfo.initFlags(
+                int flags = AppInfoBean.initFlags(
                     ShortcutInfo.getPackageInfo(getContext(), componentName.getPackageName()));
                 mWaitingForUninstall =
                     mLauncher.startApplicationUninstallActivity(componentName, flags);
@@ -323,15 +337,15 @@ public class DeleteDropTarget extends ButtonDropTarget {
             LauncherModel.deleteItemFromDatabase(mLauncher, item);
         } else if (isWorkspaceFolder(d)) {
             // Remove the folder from the workspace and delete the contents from launcher model
-            FolderInfo folderInfo = (FolderInfo) item;
+            FolderInfoBean folderInfo = (FolderInfoBean) item;
             mLauncher.removeFolder(folderInfo);
             LauncherModel.deleteFolderContentsFromDatabase(mLauncher, folderInfo);
         } else if (isWorkspaceOrFolderWidget(d)) {
             // Remove the widget from the workspace
-            mLauncher.removeAppWidget((LauncherAppWidgetInfo) item);
+            mLauncher.removeAppWidget((LauncherAppWidgetInfoBean) item);
             LauncherModel.deleteItemFromDatabase(mLauncher, item);
 
-            final LauncherAppWidgetInfo launcherAppWidgetInfo = (LauncherAppWidgetInfo) item;
+            final LauncherAppWidgetInfoBean launcherAppWidgetInfo = (LauncherAppWidgetInfoBean) item;
             final LauncherAppWidgetHost appWidgetHost = mLauncher.getAppWidgetHost();
             if (appWidgetHost != null) {
                 // Deleting an app widget ID is a void call but writes to disk before returning

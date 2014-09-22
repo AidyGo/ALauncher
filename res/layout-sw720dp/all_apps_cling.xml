@@ -14,7 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.aidy.launcher3.Cling xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.support.views.Cling xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:launcher="http://schemas.android.com/apk/res-auto/com.aidy.launcher3"
     launcher:drawIdentifier="all_apps_large" >
 
@@ -49,4 +49,4 @@
         </LinearLayout>
     </FrameLayout>
 
-</com.aidy.launcher3.Cling>
+</com.aidy.launcher3.support.views.Cling>

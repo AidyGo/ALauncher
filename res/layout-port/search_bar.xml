@@ -23,7 +23,7 @@
 
     <!-- Global search icon -->
 
-    <com.aidy.launcher3.HolographicLinearLayout
+    <com.aidy.launcher3.support.views.holographic.HolographicLinearLayout
         android:id="@+id/search_button_container"
         style="@style/SearchButton"
         android:layout_width="match_parent"
@@ -47,11 +47,11 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_home_search_normal_holo" />
-    </com.aidy.launcher3.HolographicLinearLayout>
+    </com.aidy.launcher3.support.views.holographic.HolographicLinearLayout>
 
     <!-- Voice search icon -->
 
-    <com.aidy.launcher3.HolographicLinearLayout
+    <com.aidy.launcher3.support.views.holographic.HolographicLinearLayout
         android:id="@+id/voice_button_container"
         style="@style/SearchButton"
         android:layout_width="@dimen/app_icon_size"
@@ -74,6 +74,6 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_home_voice_search_holo" />
-    </com.aidy.launcher3.HolographicLinearLayout>
+    </com.aidy.launcher3.support.views.holographic.HolographicLinearLayout>
 
 </RelativeLayout>

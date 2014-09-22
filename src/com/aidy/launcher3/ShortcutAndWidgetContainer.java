@@ -16,6 +16,10 @@
 
 package com.aidy.launcher3;
 
+import com.aidy.launcher3.bean.DeviceProfile;
+import com.aidy.launcher3.ui.LauncherAppState;
+import com.aidy.launcher3.ui.LauncherAppWidgetHostView;
+
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -25,224 +29,219 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class ShortcutAndWidgetContainer extends ViewGroup {
-    static final String TAG = "CellLayoutChildren";
+	static final String TAG = "CellLayoutChildren";
 
-    // These are temporary variables to prevent having to allocate a new object just to
-    // return an (x, y) value from helper functions. Do NOT use them to maintain other state.
-    private final int[] mTmpCellXY = new int[2];
+	// These are temporary variables to prevent having to allocate a new object
+	// just to
+	// return an (x, y) value from helper functions. Do NOT use them to maintain
+	// other state.
+	private final int[] mTmpCellXY = new int[2];
 
-    private final WallpaperManager mWallpaperManager;
+	private final WallpaperManager mWallpaperManager;
 
-    private boolean mIsHotseatLayout;
+	private boolean mIsHotseatLayout;
 
-    private int mCellWidth;
-    private int mCellHeight;
+	private int mCellWidth;
+	private int mCellHeight;
 
-    private int mWidthGap;
-    private int mHeightGap;
+	private int mWidthGap;
+	private int mHeightGap;
 
-    private int mCountX;
-    private int mCountY;
+	private int mCountX;
+	private int mCountY;
 
-    private boolean mInvertIfRtl = false;
+	private boolean mInvertIfRtl = false;
 
-    public ShortcutAndWidgetContainer(Context context) {
-        super(context);
-        mWallpaperManager = WallpaperManager.getInstance(context);
-    }
+	public ShortcutAndWidgetContainer(Context context) {
+		super(context);
+		mWallpaperManager = WallpaperManager.getInstance(context);
+	}
 
-    public void setCellDimensions(int cellWidth, int cellHeight, int widthGap, int heightGap,
-            int countX, int countY) {
-        mCellWidth = cellWidth;
-        mCellHeight = cellHeight;
-        mWidthGap = widthGap;
-        mHeightGap = heightGap;
-        mCountX = countX;
-        mCountY = countY;
-    }
+	public void setCellDimensions(int cellWidth, int cellHeight, int widthGap, int heightGap, int countX, int countY) {
+		mCellWidth = cellWidth;
+		mCellHeight = cellHeight;
+		mWidthGap = widthGap;
+		mHeightGap = heightGap;
+		mCountX = countX;
+		mCountY = countY;
+	}
 
-    public View getChildAt(int x, int y) {
-        final int count = getChildCount();
-        for (int i = 0; i < count; i++) {
-            View child = getChildAt(i);
-            CellLayout.LayoutParams lp = (CellLayout.LayoutParams) child.getLayoutParams();
+	public View getChildAt(int x, int y) {
+		final int count = getChildCount();
+		for (int i = 0; i < count; i++) {
+			View child = getChildAt(i);
+			CellLayout.LayoutParams lp = (CellLayout.LayoutParams) child.getLayoutParams();
 
-            if ((lp.cellX <= x) && (x < lp.cellX + lp.cellHSpan) &&
-                    (lp.cellY <= y) && (y < lp.cellY + lp.cellVSpan)) {
-                return child;
-            }
-        }
-        return null;
-    }
+			if ((lp.cellX <= x) && (x < lp.cellX + lp.cellHSpan) && (lp.cellY <= y) && (y < lp.cellY + lp.cellVSpan)) {
+				return child;
+			}
+		}
+		return null;
+	}
 
-    @Override
-    protected void dispatchDraw(Canvas canvas) {
-        @SuppressWarnings("all") // suppress dead code warning
-        final boolean debug = false;
-        if (debug) {
-            // Debug drawing for hit space
-            Paint p = new Paint();
-            p.setColor(0x6600FF00);
-            for (int i = getChildCount() - 1; i >= 0; i--) {
-                final View child = getChildAt(i);
-                final CellLayout.LayoutParams lp = (CellLayout.LayoutParams) child.getLayoutParams();
+	@Override
+	protected void dispatchDraw(Canvas canvas) {
+		@SuppressWarnings("all")
+		// suppress dead code warning
+		final boolean debug = false;
+		if (debug) {
+			// Debug drawing for hit space
+			Paint p = new Paint();
+			p.setColor(0x6600FF00);
+			for (int i = getChildCount() - 1; i >= 0; i--) {
+				final View child = getChildAt(i);
+				final CellLayout.LayoutParams lp = (CellLayout.LayoutParams) child.getLayoutParams();
 
-                canvas.drawRect(lp.x, lp.y, lp.x + lp.width, lp.y + lp.height, p);
-            }
-        }
-        super.dispatchDraw(canvas);
-    }
+				canvas.drawRect(lp.x, lp.y, lp.x + lp.width, lp.y + lp.height, p);
+			}
+		}
+		super.dispatchDraw(canvas);
+	}
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int count = getChildCount();
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		int count = getChildCount();
 
-        int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
-        int heightSpecSize =  MeasureSpec.getSize(heightMeasureSpec);
-        setMeasuredDimension(widthSpecSize, heightSpecSize);
+		int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
+		int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
+		setMeasuredDimension(widthSpecSize, heightSpecSize);
 
-        for (int i = 0; i < count; i++) {
-            View child = getChildAt(i);
-            if (child.getVisibility() != GONE) {
-                measureChild(child);
-            }
-        }
-    }
+		for (int i = 0; i < count; i++) {
+			View child = getChildAt(i);
+			if (child.getVisibility() != GONE) {
+				measureChild(child);
+			}
+		}
+	}
 
-    public void setupLp(CellLayout.LayoutParams lp) {
-        lp.setup(mCellWidth, mCellHeight, mWidthGap, mHeightGap, invertLayoutHorizontally(),
-                mCountX);
-    }
+	public void setupLp(CellLayout.LayoutParams lp) {
+		lp.setup(mCellWidth, mCellHeight, mWidthGap, mHeightGap, invertLayoutHorizontally(), mCountX);
+	}
 
-    // Set whether or not to invert the layout horizontally if the layout is in RTL mode.
-    public void setInvertIfRtl(boolean invert) {
-        mInvertIfRtl = invert;
-    }
+	// Set whether or not to invert the layout horizontally if the layout is in
+	// RTL mode.
+	public void setInvertIfRtl(boolean invert) {
+		mInvertIfRtl = invert;
+	}
 
-    public void setIsHotseat(boolean isHotseat) {
-        mIsHotseatLayout = isHotseat;
-    }
+	public void setIsHotseat(boolean isHotseat) {
+		mIsHotseatLayout = isHotseat;
+	}
 
-    int getCellContentWidth() {
-        final LauncherAppState app = LauncherAppState.getInstance();
-        final DeviceProfile grid = app.getDynamicGrid().getDeviceProfile();
-        return Math.min(getMeasuredHeight(), mIsHotseatLayout ?
-                grid.hotseatCellWidthPx: grid.cellWidthPx);
-    }
+	public int getCellContentWidth() {
+		final LauncherAppState app = LauncherAppState.getInstance();
+		final DeviceProfile grid = app.getDynamicGrid().getDeviceProfile();
+		return Math.min(getMeasuredHeight(), mIsHotseatLayout ? grid.hotseatCellWidthPx : grid.cellWidthPx);
+	}
 
-    int getCellContentHeight() {
-        final LauncherAppState app = LauncherAppState.getInstance();
-        final DeviceProfile grid = app.getDynamicGrid().getDeviceProfile();
-        return Math.min(getMeasuredHeight(), mIsHotseatLayout ?
-                grid.hotseatCellHeightPx : grid.cellHeightPx);
-    }
+	public int getCellContentHeight() {
+		final LauncherAppState app = LauncherAppState.getInstance();
+		final DeviceProfile grid = app.getDynamicGrid().getDeviceProfile();
+		return Math.min(getMeasuredHeight(), mIsHotseatLayout ? grid.hotseatCellHeightPx : grid.cellHeightPx);
+	}
 
-    public void measureChild(View child) {
-        final LauncherAppState app = LauncherAppState.getInstance();
-        final DeviceProfile grid = app.getDynamicGrid().getDeviceProfile();
-        final int cellWidth = mCellWidth;
-        final int cellHeight = mCellHeight;
-        CellLayout.LayoutParams lp = (CellLayout.LayoutParams) child.getLayoutParams();
-        if (!lp.isFullscreen) {
-            lp.setup(cellWidth, cellHeight, mWidthGap, mHeightGap, invertLayoutHorizontally(),
-                    mCountX);
+	public void measureChild(View child) {
+		final LauncherAppState app = LauncherAppState.getInstance();
+		final DeviceProfile grid = app.getDynamicGrid().getDeviceProfile();
+		final int cellWidth = mCellWidth;
+		final int cellHeight = mCellHeight;
+		CellLayout.LayoutParams lp = (CellLayout.LayoutParams) child.getLayoutParams();
+		if (!lp.isFullscreen) {
+			lp.setup(cellWidth, cellHeight, mWidthGap, mHeightGap, invertLayoutHorizontally(), mCountX);
 
-            if (child instanceof LauncherAppWidgetHostView) {
-                // Widgets have their own padding, so skip
-            } else {
-                // Otherwise, center the icon
-                int cHeight = getCellContentHeight();
-                int cellPaddingY = (int) Math.max(0, ((lp.height - cHeight) / 2f));
-                int cellPaddingX = (int) (grid.edgeMarginPx / 2f);
-                child.setPadding(cellPaddingX, cellPaddingY, cellPaddingX, 0);
-            }
-        } else {
-            lp.x = 0;
-            lp.y = 0;
-            lp.width = getMeasuredWidth();
-            lp.height = getMeasuredHeight();
-        }
-        int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(lp.width, MeasureSpec.EXACTLY);
-        int childheightMeasureSpec = MeasureSpec.makeMeasureSpec(lp.height,
-                MeasureSpec.EXACTLY);
-        child.measure(childWidthMeasureSpec, childheightMeasureSpec);
-    }
+			if (child instanceof LauncherAppWidgetHostView) {
+				// Widgets have their own padding, so skip
+			} else {
+				// Otherwise, center the icon
+				int cHeight = getCellContentHeight();
+				int cellPaddingY = (int) Math.max(0, ((lp.height - cHeight) / 2f));
+				int cellPaddingX = (int) (grid.edgeMarginPx / 2f);
+				child.setPadding(cellPaddingX, cellPaddingY, cellPaddingX, 0);
+			}
+		} else {
+			lp.x = 0;
+			lp.y = 0;
+			lp.width = getMeasuredWidth();
+			lp.height = getMeasuredHeight();
+		}
+		int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(lp.width, MeasureSpec.EXACTLY);
+		int childheightMeasureSpec = MeasureSpec.makeMeasureSpec(lp.height, MeasureSpec.EXACTLY);
+		child.measure(childWidthMeasureSpec, childheightMeasureSpec);
+	}
 
-    private boolean invertLayoutHorizontally() {
-        return mInvertIfRtl && isLayoutRtl();
-    }
+	private boolean invertLayoutHorizontally() {
+		return mInvertIfRtl && isLayoutRtl();
+	}
 
-    public boolean isLayoutRtl() {
-        return (getLayoutDirection() == LAYOUT_DIRECTION_RTL);
-    }
+	public boolean isLayoutRtl() {
+		return (getLayoutDirection() == LAYOUT_DIRECTION_RTL);
+	}
 
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int count = getChildCount();
-        for (int i = 0; i < count; i++) {
-            final View child = getChildAt(i);
-            if (child.getVisibility() != GONE) {
-                CellLayout.LayoutParams lp = (CellLayout.LayoutParams) child.getLayoutParams();
-                int childLeft = lp.x;
-                int childTop = lp.y;
-                child.layout(childLeft, childTop, childLeft + lp.width, childTop + lp.height);
+	@Override
+	protected void onLayout(boolean changed, int l, int t, int r, int b) {
+		int count = getChildCount();
+		for (int i = 0; i < count; i++) {
+			final View child = getChildAt(i);
+			if (child.getVisibility() != GONE) {
+				CellLayout.LayoutParams lp = (CellLayout.LayoutParams) child.getLayoutParams();
+				int childLeft = lp.x;
+				int childTop = lp.y;
+				child.layout(childLeft, childTop, childLeft + lp.width, childTop + lp.height);
 
-                if (lp.dropped) {
-                    lp.dropped = false;
+				if (lp.dropped) {
+					lp.dropped = false;
 
-                    final int[] cellXY = mTmpCellXY;
-                    getLocationOnScreen(cellXY);
-                    mWallpaperManager.sendWallpaperCommand(getWindowToken(),
-                            WallpaperManager.COMMAND_DROP,
-                            cellXY[0] + childLeft + lp.width / 2,
-                            cellXY[1] + childTop + lp.height / 2, 0, null);
-                }
-            }
-        }
-    }
+					final int[] cellXY = mTmpCellXY;
+					getLocationOnScreen(cellXY);
+					mWallpaperManager.sendWallpaperCommand(getWindowToken(), WallpaperManager.COMMAND_DROP, cellXY[0]
+							+ childLeft + lp.width / 2, cellXY[1] + childTop + lp.height / 2, 0, null);
+				}
+			}
+		}
+	}
 
-    @Override
-    public boolean shouldDelayChildPressedState() {
-        return false;
-    }
+	@Override
+	public boolean shouldDelayChildPressedState() {
+		return false;
+	}
 
-    @Override
-    public void requestChildFocus(View child, View focused) {
-        super.requestChildFocus(child, focused);
-        if (child != null) {
-            Rect r = new Rect();
-            child.getDrawingRect(r);
-            requestRectangleOnScreen(r);
-        }
-    }
+	@Override
+	public void requestChildFocus(View child, View focused) {
+		super.requestChildFocus(child, focused);
+		if (child != null) {
+			Rect r = new Rect();
+			child.getDrawingRect(r);
+			requestRectangleOnScreen(r);
+		}
+	}
 
-    @Override
-    public void cancelLongPress() {
-        super.cancelLongPress();
+	@Override
+	public void cancelLongPress() {
+		super.cancelLongPress();
 
-        // Cancel long press for all children
-        final int count = getChildCount();
-        for (int i = 0; i < count; i++) {
-            final View child = getChildAt(i);
-            child.cancelLongPress();
-        }
-    }
+		// Cancel long press for all children
+		final int count = getChildCount();
+		for (int i = 0; i < count; i++) {
+			final View child = getChildAt(i);
+			child.cancelLongPress();
+		}
+	}
 
-    @Override
-    protected void setChildrenDrawingCacheEnabled(boolean enabled) {
-        final int count = getChildCount();
-        for (int i = 0; i < count; i++) {
-            final View view = getChildAt(i);
-            view.setDrawingCacheEnabled(enabled);
-            // Update the drawing caches
-            if (!view.isHardwareAccelerated() && enabled) {
-                view.buildDrawingCache(true);
-            }
-        }
-    }
+	@Override
+	protected void setChildrenDrawingCacheEnabled(boolean enabled) {
+		final int count = getChildCount();
+		for (int i = 0; i < count; i++) {
+			final View view = getChildAt(i);
+			view.setDrawingCacheEnabled(enabled);
+			// Update the drawing caches
+			if (!view.isHardwareAccelerated() && enabled) {
+				view.buildDrawingCache(true);
+			}
+		}
+	}
 
-    @Override
-    protected void setChildrenDrawnWithCacheEnabled(boolean enabled) {
-        super.setChildrenDrawnWithCacheEnabled(enabled);
-    }
+	@Override
+	protected void setChildrenDrawnWithCacheEnabled(boolean enabled) {
+		super.setChildrenDrawnWithCacheEnabled(enabled);
+	}
 }

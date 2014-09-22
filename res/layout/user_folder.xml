@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 
-<com.aidy.launcher3.Folder xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.ui.folder.Folder xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/portal_container_holo"
@@ -34,7 +34,7 @@
             android:hapticFeedbackEnabled="false" />
     </ScrollView>
 
-    <com.aidy.launcher3.FolderEditText
+    <com.aidy.launcher3.ui.folder.FolderEditText
         android:id="@+id/folder_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,4 +52,4 @@
         android:textCursorDrawable="@null"
         android:textSize="14sp" />
 
-</com.aidy.launcher3.Folder>
+</com.aidy.launcher3.ui.folder.Folder>

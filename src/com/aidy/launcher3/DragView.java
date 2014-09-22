@@ -31,6 +31,8 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.ui.Launcher;
+import com.aidy.launcher3.ui.LauncherAnimUtils;
 
 public class DragView extends View {
     private static float sDragAlpha = 1f;

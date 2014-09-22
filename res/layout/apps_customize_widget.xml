@@ -14,7 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.aidy.launcher3.PagedViewWidget xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.support.views.pagedview.PagedViewWidget xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="1"
@@ -24,7 +24,7 @@
 
     <!-- The preview of the widget or shortcut. -->
 
-    <com.aidy.launcher3.PagedViewWidgetImageView
+    <com.aidy.launcher3.support.views.pagedview.PagedViewWidgetImageView
         android:id="@+id/widget_preview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,4 +81,4 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-</com.aidy.launcher3.PagedViewWidget>
+</com.aidy.launcher3.support.views.pagedview.PagedViewWidget>

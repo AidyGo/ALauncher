@@ -16,6 +16,8 @@
 
 package com.aidy.launcher3;
 
+import com.aidy.launcher3.ui.LauncherAppState;
+
 import android.view.View;
 
 public class CheckLongPressHelper {

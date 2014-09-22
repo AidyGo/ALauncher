@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 
-<com.aidy.launcher3.FolderIcon xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.ui.folder.FolderIcon xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/focusable_view_bg"
@@ -30,8 +30,8 @@
         android:antialias="true"
         android:src="@drawable/portal_ring_inner_holo" />
 
-    <com.aidy.launcher3.BubbleTextView
+    <com.aidy.launcher3.support.views.BubbleTextView
         android:id="@+id/folder_icon_name"
         style="@style/WorkspaceIcon" />
 
-</com.aidy.launcher3.FolderIcon>
+</com.aidy.launcher3.ui.folder.FolderIcon>
