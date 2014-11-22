@@ -113,6 +113,7 @@ import com.aidy.launcher3.ui.receiver.InstallShortcutReceiver;
 import com.aidy.launcher3.ui.receiver.UninstallShortcutReceiver;
 import com.aidy.launcher3.ui.wallpaper.WallpaperCropActivity;
 import com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity;
+import com.aidy.launcher3.ui.wallpaper.support.WallpaperUtils;
 
 /**
  * The workspace is a wide area with a wallpaper and a finite number of pages.
@@ -1182,9 +1183,9 @@ public class Workspace extends SmoothPagedView implements DropTarget, DragSource
 	}
 
 	public void setWallpaperDimension() {
-		String spKey = WallpaperCropActivity.getSharedPreferencesKey();
+		String spKey = WallpaperUtils.getSharedPreferencesKey();
 		SharedPreferences sp = mLauncher.getSharedPreferences(spKey, Context.MODE_PRIVATE);
-		WallpaperPickerActivity.suggestWallpaperDimension(mLauncher.getResources(), sp, mLauncher.getWindowManager(),
+		WallpaperUtils.suggestWallpaperDimension(mLauncher.getResources(), sp, mLauncher.getWindowManager(),
 				mWallpaperManager);
 	}
 

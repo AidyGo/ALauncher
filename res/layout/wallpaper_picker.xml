@@ -18,7 +18,7 @@
 */
 -->
 
-<com.aidy.launcher3.ui.wallpaper.WallpaperRootView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.ui.wallpaper.support.WallpaperRootView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/wallpaper_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
@@ -72,6 +72,8 @@
                     android:id="@+id/live_wallpaper_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/wallpaper_type_margin_left"
+                    android:layout_marginRight="@dimen/wallpaper_type_margin_right"
                     android:orientation="horizontal" />
 
                 <LinearLayout
@@ -88,4 +90,4 @@
             android:background="@drawable/tile_shadow_bottom" />
     </LinearLayout>
 
-</com.aidy.launcher3.ui.wallpaper.WallpaperRootView>
+</com.aidy.launcher3.ui.wallpaper.support.WallpaperRootView>

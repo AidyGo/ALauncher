@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.aidy.launcher3.ui.wallpaper;
+package com.aidy.launcher3.ui.wallpaper.support;
+
+import com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity;
 
 import android.content.Context;
 import android.graphics.Rect;

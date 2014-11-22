@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-package com.aidy.launcher3.ui.wallpaper;
+package com.aidy.launcher3.ui.wallpaper.adapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -32,14 +35,11 @@ import android.widget.FrameLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.aidy.launcher3.R;
-import com.aidy.launcher3.R.dimen;
-import com.aidy.launcher3.R.id;
-import com.aidy.launcher3.R.layout;
 import com.aidy.launcher3.support.utils.Utilities;
+import com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity;
+import com.aidy.launcher3.ui.wallpaper.bean.WallpaperTileInfo;
+import com.aidy.launcher3.ui.wallpaper.support.WallpaperUtils;
 
 public class ThirdPartyWallpaperPickerListAdapter extends BaseAdapter implements ListAdapter {
     private static final String LOG_TAG = "LiveWallpaperListAdapter";
@@ -51,7 +51,7 @@ public class ThirdPartyWallpaperPickerListAdapter extends BaseAdapter implements
     private List<ThirdPartyWallpaperTile> mThirdPartyWallpaperPickers =
             new ArrayList<ThirdPartyWallpaperTile>();
 
-    public static class ThirdPartyWallpaperTile extends WallpaperPickerActivity.WallpaperTileInfo {
+    public static class ThirdPartyWallpaperTile extends WallpaperTileInfo {
         private ResolveInfo mResolveInfo;
         public ThirdPartyWallpaperTile(ResolveInfo resolveInfo) {
             mResolveInfo = resolveInfo;
@@ -132,7 +132,7 @@ public class ThirdPartyWallpaperPickerListAdapter extends BaseAdapter implements
             view = convertView;
         }
 
-        WallpaperPickerActivity.setWallpaperItemPaddingToZero((FrameLayout) view);
+        WallpaperUtils.setWallpaperItemPaddingToZero((FrameLayout) view);
 
         ResolveInfo info = mThirdPartyWallpaperPickers.get(position).mResolveInfo;
         TextView label = (TextView) view.findViewById(R.id.wallpaper_item_label);

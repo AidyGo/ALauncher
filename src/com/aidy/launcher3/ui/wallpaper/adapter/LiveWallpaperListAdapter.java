@@ -14,7 +14,16 @@
  * limitations under the License.
  */
 
-package com.aidy.launcher3.ui.wallpaper;
+package com.aidy.launcher3.ui.wallpaper.adapter;
+
+import java.io.IOException;
+import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.WallpaperInfo;
 import android.app.WallpaperManager;
@@ -35,19 +44,11 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import org.xmlpull.v1.XmlPullParserException;
-
 import com.aidy.launcher3.R;
-import com.aidy.launcher3.R.id;
-import com.aidy.launcher3.R.layout;
 import com.aidy.launcher3.support.utils.Utilities;
-
-import java.io.IOException;
-import java.text.Collator;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity;
+import com.aidy.launcher3.ui.wallpaper.bean.WallpaperTileInfo;
+import com.aidy.launcher3.ui.wallpaper.support.WallpaperUtils;
 
 public class LiveWallpaperListAdapter extends BaseAdapter implements ListAdapter {
     private static final String LOG_TAG = "LiveWallpaperListAdapter";
@@ -95,7 +96,7 @@ public class LiveWallpaperListAdapter extends BaseAdapter implements ListAdapter
             view = convertView;
         }
 
-        WallpaperPickerActivity.setWallpaperItemPaddingToZero((FrameLayout) view);
+        WallpaperUtils.setWallpaperItemPaddingToZero((FrameLayout) view);
 
         LiveWallpaperTile wallpaperInfo = mWallpapers.get(position);
         wallpaperInfo.setView(view);
@@ -115,7 +116,7 @@ public class LiveWallpaperListAdapter extends BaseAdapter implements ListAdapter
         return view;
     }
 
-    public static class LiveWallpaperTile extends WallpaperPickerActivity.WallpaperTileInfo {
+    public static class LiveWallpaperTile extends WallpaperTileInfo {
         private Drawable mThumbnail;
         private WallpaperInfo mInfo;
         public LiveWallpaperTile(Drawable thumbnail, WallpaperInfo info, Intent intent) {

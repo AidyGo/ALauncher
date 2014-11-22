@@ -13,9 +13,16 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- -->
+-->
 
 <resources>
+
     <string-array name="wallpapers" translatable="false">
+        <item>default_wallpaper_3</item>
+        <item>default_wallpaper_4</item>
+        <item>default_wallpaper_5</item>
+        <item>default_wallpaper_6</item>
+        <item>default_wallpaper_7</item>
     </string-array>
+
 </resources>
