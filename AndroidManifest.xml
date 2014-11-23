@@ -91,20 +91,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-             <activity
-            android:name="com.aidy.launcher3.ToggleWeightWatcher"
-            android:enabled="@bool/debug_memory_enabled"
-            android:icon="@mipmap/ic_launcher_home"
-            android:label="@string/toggle_weight_watcher" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        -->
         <activity
             android:name="com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity"
             android:finishOnCloseSystemDialogs="true"
@@ -148,6 +134,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <!-- settings -->
+        <activity android:name="com.aidy.launcher3.ui.settings.LauncherSettingsActivity" >
         </activity>
 
         <service
