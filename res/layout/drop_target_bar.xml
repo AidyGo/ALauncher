@@ -37,7 +37,7 @@
 
         <!-- Info target -->
 
-        <com.aidy.launcher3.support.InfoDropTargetopTarget
+        <com.aidy.launcher3.support.InfoDropTarget
             android:id="@+id/info_target_text"
             style="@style/DropTargetButton"
             android:drawableStart="@drawable/info_target_selector"

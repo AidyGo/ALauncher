@@ -105,7 +105,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.aidy.launcher3.ui.wallpaper.WallpaperCropActivityrCropActivity"
+            android:name="com.aidy.launcher3.ui.wallpaper.WallpaperCropActivity"
             android:finishOnCloseSystemDialogs="true"
             android:icon="@mipmap/ic_launcher_wallpaper"
             android:label="@string/crop_wallpaper"
@@ -155,7 +155,7 @@
 
         <!-- Intent received used to install shortcuts from other applications -->
         <receiver
-            android:name="com.aidy.launcher3.InstallShortcutReceiver"
+            android:name="com.aidy.launcher3.ui.receiver.InstallShortcutReceiver"
             android:permission="com.aidy.launcher3.permission.INSTALL_SHORTCUT" >
             <intent-filter>
                 <action android:name="com.aidy.launcher3.action.INSTALL_SHORTCUT" />
@@ -179,7 +179,7 @@
                 <action android:name="android.intent.action.USER_INITIALIZE" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.aidy.launcher3.ui.receiver.PackageChangedReceiverngedReceiver" >
+        <receiver android:name="com.aidy.launcher3.ui.receiver.PackageChangedReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_CHANGED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />

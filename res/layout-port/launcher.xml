@@ -104,7 +104,7 @@
              touch target than the microphone constrained by the search bar bounds.
         -->
 
-        <com.aidy.launcher3.support.DrawableStateProxyViewroxyView
+        <com.aidy.launcher3.support.DrawableStateProxyView
             android:id="@+id/voice_button_proxy"
             android:layout_width="0dp"
             android:layout_height="0dp"
