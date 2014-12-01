@@ -25,7 +25,7 @@ import android.view.ViewPropertyAnimator;
 import java.util.ArrayList;
 import java.util.EnumSet;
 
-import com.aidy.launcher3.FirstFrameAnimatorHelper;
+import com.aidy.launcher3.support.helper.FirstFrameAnimatorHelper;
 
 public class LauncherViewPropertyAnimator extends Animator implements AnimatorListener {
     enum Properties {

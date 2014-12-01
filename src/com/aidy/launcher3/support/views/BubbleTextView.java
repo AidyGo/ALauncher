@@ -16,15 +16,15 @@
 
 package com.aidy.launcher3.support.views;
 
-import com.aidy.launcher3.CellLayout;
-import com.aidy.launcher3.CheckLongPressHelper;
 import com.aidy.launcher3.R;
-import com.aidy.launcher3.ShortcutAndWidgetContainer;
 import com.aidy.launcher3.R.color;
 import com.aidy.launcher3.bean.DeviceProfile;
 import com.aidy.launcher3.bean.ItemInfoBean;
 import com.aidy.launcher3.bean.ShortcutInfo;
+import com.aidy.launcher3.support.CellLayout;
+import com.aidy.launcher3.support.ShortcutAndWidgetContainer;
 import com.aidy.launcher3.support.cache.IconCache;
+import com.aidy.launcher3.support.helper.CheckLongPressHelper;
 import com.aidy.launcher3.support.utils.Utilities;
 import com.aidy.launcher3.support.views.holographic.HolographicOutlineHelper;
 import com.aidy.launcher3.ui.LauncherAppState;

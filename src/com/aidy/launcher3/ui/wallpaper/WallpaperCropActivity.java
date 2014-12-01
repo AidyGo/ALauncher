@@ -33,12 +33,12 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 
-import com.aidy.launcher3.CropView;
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.photos.BitmapRegionTileSource;
+import com.aidy.launcher3.support.CropView;
 import com.aidy.launcher3.ui.wallpaper.support.BitmapCropTask;
 import com.aidy.launcher3.ui.wallpaper.support.WallpaperConstant;
 import com.aidy.launcher3.ui.wallpaper.support.WallpaperUtils;
-import com.android.photos.BitmapRegionTileSource;
 
 public class WallpaperCropActivity extends Activity {
 	private static final String LOGTAG = "Launcher3.CropActivity";

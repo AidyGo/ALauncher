@@ -30,15 +30,15 @@ import android.database.ContentObserver;
 import android.os.Handler;
 import android.util.Log;
 
-import com.aidy.launcher3.AppFilter;
-import com.aidy.launcher3.MemoryTracker;
 import com.aidy.launcher3.R;
 import com.aidy.launcher3.bean.DeviceProfile;
 import com.aidy.launcher3.bean.DynamicGrid;
 import com.aidy.launcher3.db.LauncherProvider;
 import com.aidy.launcher3.db.LauncherSettings;
+import com.aidy.launcher3.support.AppFilter;
 import com.aidy.launcher3.support.cache.IconCache;
 import com.aidy.launcher3.support.utils.Utilities;
+import com.aidy.launcher3.ui.service.MemoryTracker;
 import com.aidy.launcher3.ui.widget.WidgetPreviewLoader;
 
 public class LauncherAppState {

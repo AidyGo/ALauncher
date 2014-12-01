@@ -26,7 +26,7 @@ import android.view.ViewTreeObserver;
 
 import java.util.HashSet;
 
-import com.aidy.launcher3.FirstFrameAnimatorHelper;
+import com.aidy.launcher3.support.helper.FirstFrameAnimatorHelper;
 
 public class LauncherAnimUtils {
     static HashSet<Animator> sAnimators = new HashSet<Animator>();

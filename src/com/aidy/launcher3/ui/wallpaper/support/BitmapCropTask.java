@@ -24,8 +24,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.aidy.launcher3.gallery3d.common.Utils;
 import com.aidy.launcher3.ui.wallpaper.WallpaperCropActivity.OnBitmapCroppedHandler;
-import com.android.gallery3d.common.Utils;
 
 public class BitmapCropTask extends AsyncTask<Void, Void, Boolean> {
 	private static final String LOGTAG = BitmapCropTask.class.getSimpleName();

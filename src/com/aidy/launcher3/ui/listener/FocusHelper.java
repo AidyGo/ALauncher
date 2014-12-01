@@ -29,12 +29,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import com.aidy.launcher3.CellLayout;
-import com.aidy.launcher3.FocusOnlyTabWidget;
 import com.aidy.launcher3.R;
-import com.aidy.launcher3.ShortcutAndWidgetContainer;
-import com.aidy.launcher3.CellLayout.LayoutParams;
 import com.aidy.launcher3.R.id;
+import com.aidy.launcher3.support.CellLayout;
+import com.aidy.launcher3.support.FocusOnlyTabWidget;
+import com.aidy.launcher3.support.ShortcutAndWidgetContainer;
+import com.aidy.launcher3.support.CellLayout.LayoutParams;
 import com.aidy.launcher3.support.views.AccessibleTabView;
 import com.aidy.launcher3.support.views.BubbleTextView;
 import com.aidy.launcher3.support.views.pagedview.PagedView;

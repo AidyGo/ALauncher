@@ -14,7 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.aidy.launcher3.PageIndicatorMarker xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.support.PageIndicatorMarker xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="16dp"
     android:layout_height="16dp"
     android:layout_gravity="center_vertical" >
@@ -36,4 +36,4 @@
         android:scaleY="0.5"
         android:src="@drawable/ic_pageindicator_current" />
 
-</com.aidy.launcher3.PageIndicatorMarker>
+</com.aidy.launcher3.support.PageIndicatorMarker>

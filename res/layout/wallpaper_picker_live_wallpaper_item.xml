@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 
-<com.aidy.launcher3.CheckableFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.support.CheckableFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/wallpaperThumbnailWidth"
     android:layout_height="@dimen/wallpaperThumbnailHeight"
     android:background="@drawable/wallpaper_tile_fg"
@@ -50,4 +50,4 @@
         android:singleLine="true"
         android:textColor="@android:color/white" />
 
-</com.aidy.launcher3.CheckableFrameLayout>
+</com.aidy.launcher3.support.CheckableFrameLayout>

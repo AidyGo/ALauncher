@@ -24,10 +24,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RemoteViews;
 
-import com.aidy.launcher3.DragLayer.TouchCompleteListener;
 import com.aidy.launcher3.R.layout;
-import com.aidy.launcher3.CheckLongPressHelper;
-import com.aidy.launcher3.DragLayer;
+import com.aidy.launcher3.support.drag.DragLayer;
+import com.aidy.launcher3.support.drag.DragLayer.TouchCompleteListener;
+import com.aidy.launcher3.support.helper.CheckLongPressHelper;
 import com.aidy.launcher3.R;
 
 /**

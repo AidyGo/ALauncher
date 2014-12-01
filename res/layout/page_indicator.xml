@@ -14,7 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.aidy.launcher3.PageIndicator xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.support.PageIndicator xmlns:android="http://schemas.android.com/apk/res/android"
     android:animateLayoutChanges="true" >
 
-</com.aidy.launcher3.PageIndicator>
+</com.aidy.launcher3.support.PageIndicator>

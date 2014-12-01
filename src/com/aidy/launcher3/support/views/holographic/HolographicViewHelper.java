@@ -16,9 +16,9 @@
 
 package com.aidy.launcher3.support.views.holographic;
 
-import com.aidy.launcher3.FastBitmapDrawable;
 import com.aidy.launcher3.R;
 import com.aidy.launcher3.R.attr;
+import com.aidy.launcher3.support.FastBitmapDrawable;
 
 import android.content.Context;
 import android.content.res.Resources;

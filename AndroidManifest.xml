@@ -122,7 +122,7 @@
 
         <!-- Debugging tools -->
         <activity
-            android:name="com.aidy.launcher3.MemoryDumpActivity"
+            android:name="com.aidy.launcher3.support.MemoryDumpActivity"
             android:enabled="@bool/debug_memory_enabled"
             android:excludeFromRecents="true"
             android:icon="@mipmap/ic_launcher_home"
@@ -140,7 +140,7 @@
         </activity>
 
         <service
-            android:name="com.aidy.launcher3.MemoryTracker"
+            android:name="com.aidy.launcher3.ui.service.MemoryTracker"
             android:enabled="@bool/debug_memory_enabled" >
         </service>
 

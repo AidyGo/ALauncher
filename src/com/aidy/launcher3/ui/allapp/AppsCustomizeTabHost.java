@@ -37,13 +37,13 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
-import com.aidy.launcher3.AppsCustomizeCellLayout;
-import com.aidy.launcher3.Insettable;
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.support.AppsCustomizeCellLayout;
 import com.aidy.launcher3.support.views.pagedview.PagedViewGridLayout;
 import com.aidy.launcher3.support.views.pagedview.PagedViewWidget;
 import com.aidy.launcher3.ui.Launcher;
 import com.aidy.launcher3.ui.LauncherAnimUtils;
+import com.aidy.launcher3.ui.interfaces.Insettable;
 import com.aidy.launcher3.ui.interfaces.LauncherTransitionable;
 import com.aidy.launcher3.ui.listener.AppsCustomizeTabKeyEventListener;
 

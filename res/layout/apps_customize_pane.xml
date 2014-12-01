@@ -37,7 +37,7 @@
             android:layout_marginTop="@dimen/apps_customize_tab_bar_margin_top"
             android:visibility="gone" >
 
-            <com.aidy.launcher3.FocusOnlyTabWidget
+            <com.aidy.launcher3.support.FocusOnlyTabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

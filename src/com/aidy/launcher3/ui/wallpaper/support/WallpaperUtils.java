@@ -25,9 +25,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.gallery3d.exif.ExifInterface;
 import com.aidy.launcher3.ui.wallpaper.WallpaperCropActivity;
 import com.aidy.launcher3.ui.wallpaper.bean.ZeroPaddingDrawable;
-import com.android.gallery3d.exif.ExifInterface;
 
 public class WallpaperUtils {
 

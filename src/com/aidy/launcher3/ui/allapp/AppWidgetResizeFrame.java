@@ -13,11 +13,11 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.aidy.launcher3.CellLayout;
-import com.aidy.launcher3.DragLayer;
 import com.aidy.launcher3.R;
-import com.aidy.launcher3.DragLayer.LayoutParams;
 import com.aidy.launcher3.R.drawable;
+import com.aidy.launcher3.support.CellLayout;
+import com.aidy.launcher3.support.drag.DragLayer;
+import com.aidy.launcher3.support.drag.DragLayer.LayoutParams;
 import com.aidy.launcher3.ui.Launcher;
 import com.aidy.launcher3.ui.LauncherAnimUtils;
 import com.aidy.launcher3.ui.LauncherAppWidgetHostView;

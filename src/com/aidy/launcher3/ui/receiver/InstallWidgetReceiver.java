@@ -33,13 +33,13 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.aidy.launcher3.CellLayout;
 import com.aidy.launcher3.R;
 import com.aidy.launcher3.R.id;
 import com.aidy.launcher3.R.layout;
 import com.aidy.launcher3.R.string;
 import com.aidy.launcher3.bean.PendingAddWidgetInfo;
 import com.aidy.launcher3.db.LauncherSettings;
+import com.aidy.launcher3.support.CellLayout;
 import com.aidy.launcher3.ui.Launcher;
 
 

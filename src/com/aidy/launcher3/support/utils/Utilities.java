@@ -40,10 +40,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import com.aidy.launcher3.FastBitmapDrawable;
 import com.aidy.launcher3.R;
 import com.aidy.launcher3.R.dimen;
 import com.aidy.launcher3.R.string;
+import com.aidy.launcher3.support.FastBitmapDrawable;
 
 /**
  * Various utilities shared amongst the Launcher's classes.

@@ -54,8 +54,8 @@ import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 
-import com.aidy.launcher3.PageIndicator;
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.support.PageIndicator;
 import com.aidy.launcher3.support.utils.Utilities;
 import com.aidy.launcher3.ui.Launcher;
 

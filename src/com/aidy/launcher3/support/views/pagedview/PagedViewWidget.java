@@ -30,11 +30,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.aidy.launcher3.FastBitmapDrawable;
 import com.aidy.launcher3.R;
 import com.aidy.launcher3.R.id;
 import com.aidy.launcher3.R.string;
 import com.aidy.launcher3.bean.DeviceProfile;
+import com.aidy.launcher3.support.FastBitmapDrawable;
 import com.aidy.launcher3.ui.LauncherAppState;
 import com.aidy.launcher3.ui.widget.WidgetPreviewLoader;
 

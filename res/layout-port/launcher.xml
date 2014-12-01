@@ -24,7 +24,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/workspace_bg" >
 
-    <com.aidy.launcher3.DragLayer
+    <com.aidy.launcher3.support.drag.DragLayer
         android:id="@+id/drag_layer"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -72,7 +72,7 @@
              top of that view.
         -->
 
-        <com.aidy.launcher3.ScrimView
+        <com.aidy.launcher3.support.ScrimView
             android:id="@+id/cling_scrim"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -104,7 +104,7 @@
              touch target than the microphone constrained by the search bar bounds.
         -->
 
-        <com.aidy.launcher3.DrawableStateProxyView
+        <com.aidy.launcher3.support.DrawableStateProxyViewroxyView
             android:id="@+id/voice_button_proxy"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -120,6 +120,6 @@
             android:layout_height="match_parent"
             layout="@layout/apps_customize_pane"
             android:visibility="invisible" />
-    </com.aidy.launcher3.DragLayer>
+    </com.aidy.launcher3.support.drag.DragLayer>
 
 </FrameLayout>

@@ -19,8 +19,8 @@ package com.aidy.launcher3.ui.allapp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.aidy.launcher3.AppFilter;
 import com.aidy.launcher3.bean.AppInfoBean;
+import com.aidy.launcher3.support.AppFilter;
 import com.aidy.launcher3.support.cache.IconCache;
 
 import android.content.ComponentName;

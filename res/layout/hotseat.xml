@@ -16,7 +16,7 @@
 -->
 <com.aidy.launcher3.ui.hotseat.Hotseat xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <com.aidy.launcher3.CellLayout
+    <com.aidy.launcher3.support.CellLayout
         android:id="@+id/layout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

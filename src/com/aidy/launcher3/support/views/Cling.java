@@ -16,7 +16,6 @@
 
 package com.aidy.launcher3.support.views;
 
-import com.aidy.launcher3.Insettable;
 import com.aidy.launcher3.R;
 import com.aidy.launcher3.R.color;
 import com.aidy.launcher3.R.drawable;
@@ -29,6 +28,7 @@ import com.aidy.launcher3.ui.Launcher;
 import com.aidy.launcher3.ui.LauncherAppState;
 import com.aidy.launcher3.ui.folder.Folder;
 import com.aidy.launcher3.ui.hotseat.Hotseat;
+import com.aidy.launcher3.ui.interfaces.Insettable;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

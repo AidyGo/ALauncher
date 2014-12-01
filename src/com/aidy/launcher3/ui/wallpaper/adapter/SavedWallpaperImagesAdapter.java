@@ -39,11 +39,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 
-import com.aidy.launcher3.CropView;
+import com.aidy.launcher3.photos.BitmapRegionTileSource;
+import com.aidy.launcher3.support.CropView;
 import com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity;
 import com.aidy.launcher3.ui.wallpaper.bean.WallpaperTileInfo;
 import com.aidy.launcher3.ui.wallpaper.support.WallpaperUtils;
-import com.android.photos.BitmapRegionTileSource;
 
 public class SavedWallpaperImagesAdapter extends BaseAdapter implements ListAdapter {
 	private static String TAG = "Launcher3.SavedWallpaperImages";

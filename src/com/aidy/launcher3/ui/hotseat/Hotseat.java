@@ -32,9 +32,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import com.aidy.launcher3.CellLayout;
 import com.aidy.launcher3.R;
-import com.aidy.launcher3.CellLayout.LayoutParams;
 import com.aidy.launcher3.R.bool;
 import com.aidy.launcher3.R.drawable;
 import com.aidy.launcher3.R.id;
@@ -45,6 +43,8 @@ import com.aidy.launcher3.bean.DeviceProfile;
 import com.aidy.launcher3.bean.FolderInfoBean;
 import com.aidy.launcher3.bean.ShortcutInfo;
 import com.aidy.launcher3.db.LauncherSettings;
+import com.aidy.launcher3.support.CellLayout;
+import com.aidy.launcher3.support.CellLayout.LayoutParams;
 import com.aidy.launcher3.support.cache.IconCache;
 import com.aidy.launcher3.support.utils.Utilities;
 import com.aidy.launcher3.ui.Launcher;

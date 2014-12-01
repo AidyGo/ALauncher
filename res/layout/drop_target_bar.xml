@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2011 The Android Open Source Project
+<!--
+     Copyright (C) 2011 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,27 +14,34 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         style="@style/DropTargetButtonContainer"
-        android:layout_weight="1">
+        android:layout_weight="1" >
+
         <!-- Delete target -->
-        <com.aidy.launcher3.DeleteDropTarget
-            style="@style/DropTargetButton"
+
+        <com.aidy.launcher3.support.DeleteDropTarget
             android:id="@+id/delete_target_text"
-            android:text="@string/delete_zone_label_workspace"
-            android:drawableStart="@drawable/remove_target_selector" />
+            style="@style/DropTargetButton"
+            android:drawableStart="@drawable/remove_target_selector"
+            android:text="@string/delete_zone_label_workspace" />
     </FrameLayout>
+
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         style="@style/DropTargetButtonContainer"
-        android:layout_weight="1">
+        android:layout_weight="1" >
+
         <!-- Info target -->
-        <com.aidy.launcher3.InfoDropTarget
-            style="@style/DropTargetButton"
+
+        <com.aidy.launcher3.support.InfoDropTargetopTarget
             android:id="@+id/info_target_text"
-            android:text="@string/info_target_label"
-            android:drawableStart="@drawable/info_target_selector" />
+            style="@style/DropTargetButton"
+            android:drawableStart="@drawable/info_target_selector"
+            android:text="@string/info_target_label" />
     </FrameLayout>
+
 </merge>

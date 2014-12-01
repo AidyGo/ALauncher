@@ -5,11 +5,11 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 
-import com.aidy.launcher3.CropView;
+import com.aidy.launcher3.photos.BitmapRegionTileSource;
+import com.aidy.launcher3.support.CropView;
 import com.aidy.launcher3.ui.wallpaper.WallpaperCropActivity;
 import com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity;
 import com.aidy.launcher3.ui.wallpaper.support.WallpaperUtils;
-import com.android.photos.BitmapRegionTileSource;
 
 public class ResourceWallpaperInfo extends WallpaperTileInfo {
 	private Resources mResources;

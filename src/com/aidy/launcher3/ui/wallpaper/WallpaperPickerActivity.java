@@ -61,9 +61,9 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.aidy.launcher3.CheckableFrameLayout;
-import com.aidy.launcher3.CropView;
 import com.aidy.launcher3.R;
+import com.aidy.launcher3.support.CheckableFrameLayout;
+import com.aidy.launcher3.support.CropView;
 import com.aidy.launcher3.ui.Launcher;
 import com.aidy.launcher3.ui.LauncherViewPropertyAnimator;
 import com.aidy.launcher3.ui.wallpaper.adapter.BuiltInWallpapersAdapter;

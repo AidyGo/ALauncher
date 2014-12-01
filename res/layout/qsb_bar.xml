@@ -14,7 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.aidy.launcher3.SearchDropTargetBar xmlns:android="http://schemas.android.com/apk/res/android"
+<com.aidy.launcher3.support.SearchDropTargetBar xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/QSBBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,4 +32,4 @@
         <include layout="@layout/drop_target_bar" />
     </LinearLayout>
 
-</com.aidy.launcher3.SearchDropTargetBar>
+</com.aidy.launcher3.support.SearchDropTargetBar>

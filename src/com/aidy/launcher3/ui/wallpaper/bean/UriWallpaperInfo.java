@@ -4,11 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.net.Uri;
 
-import com.aidy.launcher3.CropView;
+import com.aidy.launcher3.photos.BitmapRegionTileSource;
+import com.aidy.launcher3.support.CropView;
 import com.aidy.launcher3.ui.wallpaper.WallpaperCropActivity.OnBitmapCroppedHandler;
 import com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity;
 import com.aidy.launcher3.ui.wallpaper.support.WallpaperUtils;
-import com.android.photos.BitmapRegionTileSource;
 
 public class UriWallpaperInfo extends WallpaperTileInfo {
 	private Uri mUri;
