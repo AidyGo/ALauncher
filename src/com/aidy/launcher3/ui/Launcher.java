@@ -149,6 +149,7 @@ import com.aidy.launcher3.ui.hotseat.Hotseat;
 import com.aidy.launcher3.ui.interfaces.LauncherTransitionable;
 import com.aidy.launcher3.ui.receiver.InstallShortcutReceiver;
 import com.aidy.launcher3.ui.settings.LauncherSettingsActivity;
+import com.aidy.launcher3.ui.settings.MenuFragment;
 import com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity;
 import com.aidy.launcher3.ui.widget.WidgetAdder;
 import com.aidy.launcher3.ui.workspace.Workspace;
@@ -417,8 +418,8 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 		}
 
 		super.onCreate(savedInstanceState);
-
-		LauncherAppState.setApplicationContext(getApplicationContext());
+//
+//		LauncherAppState.setApplicationContext(getApplicationContext());
 		LauncherAppState app = LauncherAppState.getInstance();
 
 		// Determine the dynamic grid properties
@@ -4525,5 +4526,17 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 				}
 			}.start();
 		}
+	}
+
+	/**
+	 * 单指上滑的时候，弹出底部菜单
+	 */
+	public void showBottomMenu() {
+		Log.i("aidy", "Launcher -- showBottomMenu()");
+		MenuFragment.getInstance().show(getFragmentManager(), "bottomMenuFragment");
+	}
+	
+	public void exitBottomMenu() {
+		Log.i("aidy", "Launcher -- exitBottomMenu()");
 	}
 }

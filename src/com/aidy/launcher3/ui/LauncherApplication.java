@@ -17,18 +17,52 @@
 package com.aidy.launcher3.ui;
 
 import android.app.Application;
+import android.content.Context;
+import android.view.Display;
+import android.view.WindowManager;
 
 public class LauncherApplication extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        LauncherAppState.setApplicationContext(this);
-        LauncherAppState.getInstance();
-    }
 
-    @Override
-    public void onTerminate() {
-        super.onTerminate();
-        LauncherAppState.getInstance().onTerminate();
-    }
+	private static int screenWidth;
+	private static int screenHeight;
+
+	/**
+	 * 单例模式
+	 */
+	private static LauncherApplication mInstance = null;
+
+	// private LauncherApplication() {
+	//
+	// }
+
+	public static LauncherApplication getInstance() {
+		if (null == mInstance) {
+			mInstance = new LauncherApplication();
+		}
+		return mInstance;
+	}
+
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		LauncherAppState.setApplicationContext(this);
+		LauncherAppState.getInstance();
+		Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+		screenWidth = display.getWidth();
+		screenHeight = display.getHeight();
+	}
+
+	@Override
+	public void onTerminate() {
+		super.onTerminate();
+		LauncherAppState.getInstance().onTerminate();
+	}
+
+	public static int getScreenWidth() {
+		return screenWidth;
+	}
+
+	public static int getScreenHeight() {
+		return screenHeight;
+	}
 }

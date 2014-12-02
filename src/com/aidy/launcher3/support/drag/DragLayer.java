@@ -16,6 +16,8 @@
 
 package com.aidy.launcher3.support.drag;
 
+import java.util.ArrayList;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.TimeInterpolator;
@@ -24,11 +26,14 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.*;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.view.animation.DecelerateInterpolator;
@@ -36,20 +41,15 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import com.aidy.launcher3.R;
-import com.aidy.launcher3.R.drawable;
-import com.aidy.launcher3.R.integer;
-import com.aidy.launcher3.R.string;
 import com.aidy.launcher3.bean.ItemInfoBean;
 import com.aidy.launcher3.support.CellLayout;
 import com.aidy.launcher3.support.ShortcutAndWidgetContainer;
-import com.aidy.launcher3.support.CellLayout.LayoutParams;
 import com.aidy.launcher3.support.utils.Utilities;
 import com.aidy.launcher3.ui.Launcher;
 import com.aidy.launcher3.ui.LauncherAppState;
 import com.aidy.launcher3.ui.LauncherAppWidgetHostView;
+import com.aidy.launcher3.ui.LauncherApplication;
 import com.aidy.launcher3.ui.allapp.AppWidgetResizeFrame;
 import com.aidy.launcher3.ui.folder.Folder;
 import com.aidy.launcher3.ui.folder.FolderIcon;
@@ -193,18 +193,34 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
 		return false;
 	}
 
+	private float mActionDownY = 0;
+	private float mActionDownX = 0;
+
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
 		switch (ev.getAction()) {
 		case MotionEvent.ACTION_DOWN:
+			mActionDownX = ev.getX();
+			mActionDownY = ev.getY();
 			if (handleTouchDown(ev, true)) {
 				return true;
 			}
 			break;
 		case MotionEvent.ACTION_MOVE:
-
+			// 单指上滑弹出菜单
+			if (ev.getPointerCount() == 1) {
+				if (checkConditionShowBottomMenu(mActionDownX, mActionDownY, ev.getX(), ev.getY())) {
+					mLauncher.showBottomMenu();
+					return true;
+				} else if (checkConditionExitBottomMenu(mActionDownX, mActionDownY, ev.getX(), ev.getY())) {
+					mLauncher.exitBottomMenu();
+					return true;
+				}
+			}
 			break;
 		case MotionEvent.ACTION_UP:
+			mActionDownX = 0;
+			mActionDownY = 0;
 		case MotionEvent.ACTION_CANCEL:
 			if (mTouchCompleteListener != null) {
 				mTouchCompleteListener.onTouchComplete();
@@ -878,5 +894,21 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
 
 	public interface TouchCompleteListener {
 		public void onTouchComplete();
+	}
+
+	private boolean checkConditionShowBottomMenu(float actionDownX, float actionDownY, float movedX, float movedY) {
+		if (Math.abs(movedX - actionDownX) < LauncherApplication.getScreenHeight() / 12
+				&& movedY - actionDownY < -(LauncherApplication.getScreenHeight() / 12)) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean checkConditionExitBottomMenu(float actionDownX, float actionDownY, float movedX, float movedY) {
+		if (Math.abs(movedX - actionDownX) < LauncherApplication.getScreenHeight() / 12
+				&& movedY - actionDownY > LauncherApplication.getScreenHeight() / 12) {
+			return true;
+		}
+		return false;
 	}
 }
