@@ -21,7 +21,7 @@
     package="com.aidy.launcher3" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="18"
         android:targetSdkVersion="19" />
 
     <permission
