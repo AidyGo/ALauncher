@@ -20,7 +20,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aidy.launcher3" >
 
-    <uses-sdk android:minSdkVersion="18" />
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="19" />
 
     <permission
         android:name="com.aidy.launcher3.permission.PRELOAD_WORKSPACE"

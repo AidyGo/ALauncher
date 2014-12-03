@@ -18,10 +18,11 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
     <!-- General -->
     <skip />
     <!-- Application name -->
-    <string name="application_name">Launcher3</string>
+    <string name="application_name">Single Launcher</string>
     <!-- Accessibility-facing application name -->
     <string name="home">Home</string>
     <!-- Name for all applications running as this uid. -->
@@ -31,15 +32,19 @@
     <!-- Button label on Wallpaper picker screen; user selects this button to set a specific wallpaper -->
     <string name="wallpaper_instructions">Set wallpaper</string>
     <!-- Shown when wallpapers are selected in Wallpaper picker -->
-    <!-- String indicating how many media item(s) is(are) selected
-            eg. 1 selected [CHAR LIMIT=30] -->
+    <!--
+         String indicating how many media item(s) is(are) selected
+            eg. 1 selected [CHAR LIMIT=30]
+    -->
     <plurals name="number_of_items_selected">
         <item quantity="zero">%1$d selected</item>
         <item quantity="one">%1$d selected</item>
         <item quantity="other">%1$d selected</item>
     </plurals>
-    <!-- Accessibility string used as a label for a particular wallpaper in the Wallpaper Picker list.
-         e.g. "Wallpaper 3 of 10" -->
+    <!--
+         Accessibility string used as a label for a particular wallpaper in the Wallpaper Picker list.
+         e.g. "Wallpaper 3 of 10"
+    -->
     <string name="wallpaper_accessibility_name">Wallpaper %1$d of %2$d</string>
     <!-- Accessibility string used to announce that a wallpaper has been selected. -->
     <string name="announce_selection">Selected <xliff:g id="label" example="Wallpaper 3 of 10">%1$s</xliff:g></string>
@@ -52,20 +57,20 @@
     <string name="pick_wallpaper">Wallpapers</string>
     <!-- Title of activity for cropping wallpapers -->
     <string name="crop_wallpaper">Crop wallpaper</string>
-    <!-- Displayed when user selects a shortcut for an app that was uninstalled [CHAR_LIMIT=none]-->
+    <!-- Displayed when user selects a shortcut for an app that was uninstalled [CHAR_LIMIT=none] -->
     <string name="activity_not_found">App isn\'t installed.</string>
-    <!--  Labels for the tabs in the customize drawer -->
+    <!-- Labels for the tabs in the customize drawer -->
     <string name="widgets_tab_label">Widgets</string>
-
     <string name="widget_adder">Widgets</string>
-
     <string name="toggle_weight_watcher">Show Mem</string>
 
     <!-- AppsCustomize pane -->
     <!-- Message to tell the user to press and hold on a widget to add it [CHAR_LIMIT=50] -->
     <string name="long_press_widget_to_add">Touch &amp; hold to pick up a widget.</string>
-    <!-- Market button text.  The market button text is removed in Launcher.java 
-         in the Phone UI. [CHAR LIMIT=32] -->
+    <!--
+         Market button text.  The market button text is removed in Launcher.java 
+         in the Phone UI. [CHAR LIMIT=32]
+    -->
     <string name="market">Shop</string>
     <!-- The format string for the dimensions of a widget in the drawer -->
     <!-- There is a special version of this format string for Farsi -->
@@ -73,13 +78,17 @@
 
     <!-- External-drop widget pick label format string [CHAR_LIMIT=25] -->
     <string name="external_drop_widget_pick_format" translatable="false">%1$s (%2$d \u00d7 %3$d)</string>
-    <!-- External-drop widget error string.  This is the error that is shown
+    <!--
+         External-drop widget error string.  This is the error that is shown
          when you drag and item into the homescreen and it is unable to fit,
-         or an error is encountered. [CHAR_LIMIT=50] -->
+         or an error is encountered. [CHAR_LIMIT=50]
+    -->
     <string name="external_drop_widget_error">Couldn\'t drop item on this Home screen.</string>
-    <!-- External-drop widget pick title.  This is shown as the title of the
+    <!--
+         External-drop widget pick title.  This is shown as the title of the
          dialog which allows you to pick which widgets to handle a particular
-         drop if there are multiple choices. [CHAR_LIMIT=35] -->
+         drop if there are multiple choices. [CHAR_LIMIT=35]
+    -->
     <string name="external_drop_widget_pick_title">Choose widget to create</string>
 
     <!-- Folders -->
@@ -99,8 +108,10 @@
     <string name="menu_item_add_item">Add to Home screen</string>
     <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all apps -->
     <string name="group_applications">Apps</string>
-    <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all shortcut
-s -->
+    <!--
+Options in "Add to Home" dialog box; Title of the group containing the list of all shortcut
+s
+    -->
     <string name="group_shortcuts">Shortcuts</string>
     <!-- Options in "Add to Home" dialog box; Title of the group containing the list of all widgets/gadgets -->
     <string name="group_widgets">Widgets</string>
@@ -126,19 +137,25 @@ s -->
 
     <!-- All applications label -->
     <string name="all_apps_button_label">Apps</string>
-    <!-- Label for button in all applications label to go back home (to the workspace / desktop)
-         for accessibilty (spoken when the button gets focus). -->
+    <!--
+         Label for button in all applications label to go back home (to the workspace / desktop)
+         for accessibilty (spoken when the button gets focus).
+    -->
     <string name="all_apps_home_button_label">Home</string>
-    <!-- Label for trash icon on workspace. Meant to communicate the idea of removing the
-         icon/widget from the home screen, but not permanently. [CHAR_LIMIT=30] -->
+    <!--
+         Label for trash icon on workspace. Meant to communicate the idea of removing the
+         icon/widget from the home screen, but not permanently. [CHAR_LIMIT=30]
+    -->
     <string name="delete_zone_label_workspace">Remove</string>
-    <!-- Label for trash icon in All Apps. The icon/widget will become completely unavailable on the
-         device. [CHAR_LIMIT=30]-->
+    <!--
+         Label for trash icon in All Apps. The icon/widget will become completely unavailable on the
+         device. [CHAR_LIMIT=30]
+    -->
     <string name="delete_zone_label_all_apps">Uninstall</string>
 
     <!-- Label for delete drop target. [CHAR_LIMIT=30] -->
     <string name="delete_target_label">Remove</string>
-    <!-- Label for uninstall drop target. [CHAR_LIMIT=30]-->
+    <!-- Label for uninstall drop target. [CHAR_LIMIT=30] -->
     <string name="delete_target_uninstall_label">Uninstall</string>
     <!-- Label for the info icon. [CHAR_LIMIT=30] -->
     <string name="info_target_label">App info</string>
@@ -152,20 +169,26 @@ s -->
     <!-- Accessibility: Delete button -->
     <string name="accessibility_delete_button">Remove</string>
 
-    <!-- Label for trash icon in All Apps, when an updated system app is selected. The update will
-         be uninstalled. [CHAR_LIMIT=30] -->
+    <!--
+         Label for trash icon in All Apps, when an updated system app is selected. The update will
+         be uninstalled. [CHAR_LIMIT=30]
+    -->
     <string name="delete_zone_label_all_apps_system_app">Uninstall update</string>
 
     <!-- URL pointing to help text. If empty, no link to help will be created [DO NOT TRANSLATE] -->
     <string name="help_url" translatable="false"></string>
 
-    <!--  Strings for the contextual action bar (CAB) in All Apps -->
+    <!-- Strings for the contextual action bar (CAB) in All Apps -->
     <skip />
-    <!-- Describes the button for uninstalling the currently selected application.
-         Text is not displayed, but provided for accessibility. [CHAR_LIMIT=none] -->
+    <!--
+         Describes the button for uninstalling the currently selected application.
+         Text is not displayed, but provided for accessibility. [CHAR_LIMIT=none]
+    -->
     <string name="cab_menu_delete_app">Uninstall app</string>
-    <!-- Describes the button for getting details/info about currently selected application.
-         Text is not displayed, but provided for accessibility. [CHAR_LIMIT=none] -->
+    <!--
+         Describes the button for getting details/info about currently selected application.
+         Text is not displayed, but provided for accessibility. [CHAR_LIMIT=none]
+    -->
     <string name="cab_menu_app_info">App details</string>
     <!-- Appears in the CAB when an app is selected in All Apps or Customize mode. [CHAR_LIMIT=50] -->
     <string name="cab_app_selection_text">1 app selected</string>
@@ -200,7 +223,7 @@ s -->
         shortcuts in Home.</string>
 
     <!-- Widgets: -->
-    <skip />    
+    <skip />
 
     <!-- Text to show user in place of a gadget when we can't display it properly -->
     <string name="gadget_error_text">Problem loading widget</string>
@@ -256,7 +279,8 @@ s -->
     <string name="cling_dismiss">OK</string>
     <!-- Error message on dummy custom cling layout [DO NOT TRANSLATE] -->
     <string name="dummy_custom_cling_error_message">Error: custom workspace layout passed in but custom cling was not overwritten</string>
-    <add-resource type="string" name="default_folder_name" />
+
+    <add-resource name="default_folder_name" type="string" />
 
     <!-- Folder accessibility -->
     <!-- The format string for when a folder is opened, speaks the dimensions -->
@@ -273,6 +297,7 @@ s -->
     <string name="folder_name_format">Folder: <xliff:g id="name" example="Games">%1$s</xliff:g></string>
 
     <!-- Strings used in device overlays -->
+
 
     <!-- Clings -->
     <!-- Dummy string [CHAR_LIMIT=40] -->
@@ -294,4 +319,5 @@ s -->
     <string name="wallpaper_button_text">Wallpapers</string>
     <!-- Text for settings button -->
     <string name="settings_button_text">Settings</string>
+
 </resources>
