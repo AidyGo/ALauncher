@@ -46,6 +46,7 @@ import com.aidy.launcher3.bean.ItemInfoBean;
 import com.aidy.launcher3.support.CellLayout;
 import com.aidy.launcher3.support.ShortcutAndWidgetContainer;
 import com.aidy.launcher3.support.utils.Utilities;
+import com.aidy.launcher3.support.views.bottomdrawer.BottomDrawerLayout;
 import com.aidy.launcher3.ui.Launcher;
 import com.aidy.launcher3.ui.LauncherAppState;
 import com.aidy.launcher3.ui.LauncherAppWidgetHostView;
@@ -200,6 +201,7 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
 		switch (ev.getAction()) {
 		case MotionEvent.ACTION_DOWN:
+			Log.i("aidy", "onInterceptTouchEvent() -- ACTION_DOWN");
 			mActionDownX = ev.getX();
 			mActionDownY = ev.getY();
 			if (handleTouchDown(ev, true)) {
@@ -207,21 +209,21 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
 			}
 			break;
 		case MotionEvent.ACTION_MOVE:
+			Log.i("aidy", "onInterceptTouchEvent() -- ACTION_MOVE");
 			// 单指上滑弹出菜单
 			if (ev.getPointerCount() == 1) {
 				if (checkConditionShowBottomMenu(mActionDownX, mActionDownY, ev.getX(), ev.getY())) {
+					Log.i("aidy", "DragLayer -- onInterceptTouchEvent() -- show bottom menu");
 					mLauncher.showBottomMenu();
-					return true;
-				} else if (checkConditionExitBottomMenu(mActionDownX, mActionDownY, ev.getX(), ev.getY())) {
-					mLauncher.exitBottomMenu();
 					return true;
 				}
 			}
 			break;
 		case MotionEvent.ACTION_UP:
+		case MotionEvent.ACTION_CANCEL:
+			Log.i("aidy", "onInterceptTouchEvent() -- ACTION_UP or CANCEL");
 			mActionDownX = 0;
 			mActionDownY = 0;
-		case MotionEvent.ACTION_CANCEL:
 			if (mTouchCompleteListener != null) {
 				mTouchCompleteListener.onTouchComplete();
 			}
@@ -320,6 +322,10 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
 
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
+//		if (mLauncher.getBottomDrawerState() != BottomDrawerLayout.STATE_IDLE) {
+//			return true;
+//		}
+
 		boolean handled = false;
 		int action = ev.getAction();
 
@@ -897,18 +903,12 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
 	}
 
 	private boolean checkConditionShowBottomMenu(float actionDownX, float actionDownY, float movedX, float movedY) {
-		if (Math.abs(movedX - actionDownX) < LauncherApplication.getScreenHeight() / 12
+		Log.i("aidy", "checkConditionShowBottomMenu() -- actionDownX = " + actionDownX + " -- actionDownY = " + actionDownY + " -- movedX = " + movedX + " -- movedY = " + movedY);
+		if (Math.abs(movedX - actionDownX) < LauncherApplication.getScreenWidth() / 12
 				&& movedY - actionDownY < -(LauncherApplication.getScreenHeight() / 12)) {
 			return true;
 		}
 		return false;
 	}
 
-	private boolean checkConditionExitBottomMenu(float actionDownX, float actionDownY, float movedX, float movedY) {
-		if (Math.abs(movedX - actionDownX) < LauncherApplication.getScreenHeight() / 12
-				&& movedY - actionDownY > LauncherApplication.getScreenHeight() / 12) {
-			return true;
-		}
-		return false;
-	}
 }

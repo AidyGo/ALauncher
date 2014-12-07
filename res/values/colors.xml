@@ -37,4 +37,7 @@
     <color name="outline_color">#FFFFFFFF</color>
     
     <color name="first_run_cling_circle_background_color">#64b1ea</color>
+    
+    <color name="bottom_menu_bg_color">#AAEEEEE0</color>
+    <color name="bottom_menu_line_color">#8B7D6B</color>
 </resources>

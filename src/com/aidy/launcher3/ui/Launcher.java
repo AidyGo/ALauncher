@@ -85,6 +85,8 @@ import android.text.method.TextKeyListener;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
@@ -95,6 +97,7 @@ import android.view.Surface;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -122,13 +125,13 @@ import com.aidy.launcher3.db.LauncherProvider;
 import com.aidy.launcher3.db.LauncherSettings;
 import com.aidy.launcher3.support.CellLayout;
 import com.aidy.launcher3.support.DropTarget;
+import com.aidy.launcher3.support.DropTarget.DragObject;
 import com.aidy.launcher3.support.MemoryDumpActivity;
 import com.aidy.launcher3.support.SearchDropTargetBar;
 import com.aidy.launcher3.support.SmoothPagedView;
 import com.aidy.launcher3.support.Stats;
 import com.aidy.launcher3.support.ToggleWeightWatcher;
 import com.aidy.launcher3.support.WeightWatcher;
-import com.aidy.launcher3.support.DropTarget.DragObject;
 import com.aidy.launcher3.support.cache.IconCache;
 import com.aidy.launcher3.support.drag.DragController;
 import com.aidy.launcher3.support.drag.DragLayer;
@@ -138,6 +141,8 @@ import com.aidy.launcher3.support.helper.HideFromAccessibilityHelper;
 import com.aidy.launcher3.support.utils.Utilities;
 import com.aidy.launcher3.support.views.BubbleTextView;
 import com.aidy.launcher3.support.views.Cling;
+import com.aidy.launcher3.support.views.bottomdrawer.BottomDrawerLayout;
+import com.aidy.launcher3.support.views.bottomdrawer.BottomDrawerLayout.DrawerListener;
 import com.aidy.launcher3.support.views.holographic.HolographicImageView;
 import com.aidy.launcher3.support.views.holographic.HolographicLinearLayout;
 import com.aidy.launcher3.support.views.pagedview.PagedView;
@@ -149,7 +154,6 @@ import com.aidy.launcher3.ui.hotseat.Hotseat;
 import com.aidy.launcher3.ui.interfaces.LauncherTransitionable;
 import com.aidy.launcher3.ui.receiver.InstallShortcutReceiver;
 import com.aidy.launcher3.ui.settings.LauncherSettingsActivity;
-import com.aidy.launcher3.ui.settings.MenuFragment;
 import com.aidy.launcher3.ui.wallpaper.WallpaperPickerActivity;
 import com.aidy.launcher3.ui.widget.WidgetAdder;
 import com.aidy.launcher3.ui.workspace.Workspace;
@@ -259,6 +263,8 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 	private DragLayer mDragLayer;
 	private DragController mDragController;
 	private View mWeightWatcher;
+
+	private BottomDrawerLayout mBottomDrawerLayout;
 
 	private AppWidgetManager mAppWidgetManager;
 	private LauncherAppWidgetHost mAppWidgetHost;
@@ -418,8 +424,8 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 		}
 
 		super.onCreate(savedInstanceState);
-//
-//		LauncherAppState.setApplicationContext(getApplicationContext());
+		//
+		// LauncherAppState.setApplicationContext(getApplicationContext());
 		LauncherAppState app = LauncherAppState.getInstance();
 
 		// Determine the dynamic grid properties
@@ -1186,7 +1192,7 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 	 */
 	private void setupViews() {
 		final DragController dragController = mDragController;
-
+		setUpBottomDrawer();
 		mLauncherView = findViewById(R.id.launcher);
 		mDragLayer = (DragLayer) findViewById(R.id.drag_layer);
 		mWorkspace = (Workspace) mDragLayer.findViewById(R.id.workspace);
@@ -4145,23 +4151,6 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 			return false;
 		}
 
-		// Restricted secondary users (child mode) will potentially have very
-		// few apps
-		// seeded when they start up for the first time. Clings won't work well
-		// with that
-		// boolean supportsLimitedUsers =
-		// android.os.Build.VERSION.SDK_INT >=
-		// android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-		// Account[] accounts = AccountManager.get(this).getAccounts();
-		// if (supportsLimitedUsers && accounts.length == 0) {
-		// UserManager um = (UserManager)
-		// getSystemService(Context.USER_SERVICE);
-		// Bundle restrictions = um.getUserRestrictions();
-		// if (restrictions.getBoolean(UserManager.DISALLOW_MODIFY_ACCOUNTS,
-		// false)) {
-		// return false;
-		// }
-		// }
 		return true;
 	}
 
@@ -4528,15 +4517,88 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 		}
 	}
 
+	// private BottomDrawerState mBottomDrawerState =
+	// BottomDrawerState.BOTTOM_DRAWER_CLODED;
+	// public static enum BottomDrawerState {
+	// BOTTOM_DRAWER_CLODED, BOTTOM_DRAWER_SLIDE, BOTTOM_DRAWER_OPENED
+	// }
+	private int mBottomDrawerState = BottomDrawerLayout.STATE_IDLE;
+
+	private void setUpBottomDrawer() {
+		mBottomDrawerLayout = (BottomDrawerLayout) findViewById(R.id.bottom_drawer_layout);
+		mBottomDrawerLayout.setDrawerListener(new DrawerListener() {
+
+			@Override
+			public void onDrawerStateChanged(int newState) {
+				// TODO Auto-generated method stub
+				Log.i("aidy", "onDrawerStateChanged()");
+				mBottomDrawerState = newState;
+			}
+
+			@Override
+			public void onDrawerSlide(View drawerView, float slideOffset) {
+				// TODO Auto-generated method stub
+//				Log.i("aidy", "onDrawerSlide()");
+			}
+
+			@Override
+			public void onDrawerOpened(View drawerView) {
+				// TODO Auto-generated method stub
+				Log.i("aidy", "onDrawerOpened()");
+				if (mBottomDrawerState != BottomDrawerLayout.STATE_SETTLING) {
+					mBottomDrawerState = BottomDrawerLayout.STATE_SETTLING;
+				}
+			}
+
+			@Override
+			public void onDrawerClosed(View drawerView) {
+				// TODO Auto-generated method stub
+				Log.i("aidy", "onDrawerClosed()");
+				if (mBottomDrawerState != BottomDrawerLayout.STATE_IDLE) {
+					mBottomDrawerState = BottomDrawerLayout.STATE_IDLE;
+				}
+			}
+		});
+		mDetector = new GestureDetector(this, new BottomGestureListener());
+		mBottomDrawerLayout.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				mDetector.onTouchEvent(event);
+				return false;
+			}
+		});
+	}
+	
+	private GestureDetector mDetector;
+	
+	private class BottomGestureListener extends SimpleOnGestureListener {
+
+		@Override
+		public boolean onDown(MotionEvent e) {
+			// TODO Auto-generated method stub
+			if(mBottomDrawerLayout.isDrawerOpen(Gravity.BOTTOM)) {
+				exitBottomMenu();
+			}
+			return super.onDown(e);
+		}
+	}
+
+	public int getBottomDrawerState() {
+		return mBottomDrawerState;
+	}
+
 	/**
 	 * 单指上滑的时候，弹出底部菜单
 	 */
 	public void showBottomMenu() {
-		Log.i("aidy", "Launcher -- showBottomMenu()");
-		MenuFragment.getInstance().show(getFragmentManager(), "bottomMenuFragment");
+		Log.i("aidy", "showBottomMenu()");
+		mBottomDrawerLayout.openDrawer(Gravity.BOTTOM);
 	}
 	
 	public void exitBottomMenu() {
-		Log.i("aidy", "Launcher -- exitBottomMenu()");
+		Log.i("aidy", "exitBottomMenu()");
+		mBottomDrawerLayout.closeDrawer(Gravity.BOTTOM);
 	}
 }

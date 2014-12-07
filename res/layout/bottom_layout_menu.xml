@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/background_dark"
+    android:orientation="vertical" >
+
+    <!-- status bar -->
+    <!--
+    <HorizontalScrollView android:id="@+id/bottom_menu_status_bar_hs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <LinearLayout android:id="@+id/bottom_menu_status_bar_hs_ll"
+            android:layout_width="match_parent"android:layout_height="wrap_content"></LinearLayout>
+    </HorizontalScrollView>
+    -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="status bar"
+        android:textSize="22sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/background_light" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="light "
+        android:textSize="22sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/background_light" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="setting"
+        android:textSize="22sp" />
+
+</LinearLayout>
