@@ -109,7 +109,7 @@
         android:layout_gravity="bottom"
         android:orientation="vertical" >
 
-        <include layout="@layout/bottom_layout_menu" />
+        <include layout="@layout/bottom_menu_fragment" />
     </LinearLayout>
 
 </com.aidy.launcher3.support.views.bottomdrawer.BottomDrawerLayout>

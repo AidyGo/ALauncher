@@ -320,4 +320,16 @@ s
     <!-- Text for settings button -->
     <string name="settings_button_text">Settings</string>
 
+    <!-- menu -->
+    <string name="menu_edit_mode">编辑模式</string>
+    <string name="menu_wallpaper">壁纸</string>
+    <string name="menu_widget">小部件</string>
+    <string name="menu_screen_management">屏幕管理</string>
+    <string name="menu_problem_feedback">问题反馈</string>
+    <string name="menu_version_update">版本更新</string>
+    <string name="menu_launcher_settings">桌面设置</string>
+    <string name="menu_system_settings">系统设置</string>
+    <string name="menu_light_auto">自动</string>
+    
+
 </resources>

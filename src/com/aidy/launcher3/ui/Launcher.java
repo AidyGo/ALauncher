@@ -2128,7 +2128,7 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 		sFolders.remove(folder.id);
 	}
 
-	protected void startWallpaper() {
+	public void startWallpaper() {
 		final Intent pickWallpaper = new Intent(Intent.ACTION_SET_WALLPAPER);
 		pickWallpaper.setComponent(getWallpaperPickerComponent());
 		startActivityForResult(pickWallpaper, REQUEST_PICK_WALLPAPER);
@@ -2216,6 +2216,10 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 		// launching, or after the
 		// view has detached (it's possible for this to happen if the view is
 		// removed mid touch).
+		if(mBottomDrawerLayout.isDrawerOpen(Gravity.BOTTOM)) {
+			return;
+		}
+		
 		if (v.getWindowToken() == null) {
 			return;
 		}
@@ -2665,6 +2669,9 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 	}
 
 	public boolean onLongClick(View v) {
+		if(mBottomDrawerLayout.isDrawerOpen(Gravity.BOTTOM)) {
+			return false;
+		}
 		if (!isDraggingEnabled())
 			return false;
 		if (isWorkspaceLocked())
@@ -3127,7 +3134,7 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 	public void onWorkspaceShown(boolean animated) {
 	}
 
-	void showAllApps(boolean animated, AppsCustomizePagedView.ContentType contentType, boolean resetPageToZero) {
+	public void showAllApps(boolean animated, AppsCustomizePagedView.ContentType contentType, boolean resetPageToZero) {
 		if (mState != State.WORKSPACE)
 			return;
 

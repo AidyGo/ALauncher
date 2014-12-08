@@ -6,45 +6,232 @@
     android:orientation="vertical" >
 
     <!-- status bar -->
-    <!--
-    <HorizontalScrollView android:id="@+id/bottom_menu_status_bar_hs"
+
+    <HorizontalScrollView
+        android:id="@+id/bottom_menu_status_bar_hs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        
-        <LinearLayout android:id="@+id/bottom_menu_status_bar_hs_ll"
-            android:layout_width="match_parent"android:layout_height="wrap_content"></LinearLayout>
+        android:layout_height="wrap_content"
+        android:fadeScrollbars="true"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:id="@+id/bottom_menu_status_bar_hs_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp" >
+
+            <!-- 电灯，wifi，数据，蓝牙，定位，转屏，飞行模式 -->
+
+            <ImageButton
+                android:id="@+id/menu_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_setting" />
+
+            <ImageButton
+                android:id="@+id/menu_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_setting" />
+
+            <ImageButton
+                android:id="@+id/menu_gw_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_setting" />
+
+            <ImageButton
+                android:id="@+id/menu_blue_tooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_setting" />
+
+            <ImageButton
+                android:id="@+id/menu_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_setting" />
+
+            <ImageButton
+                android:id="@+id/menu_auto_rotate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_setting" />
+
+            <ImageButton
+                android:id="@+id/menu_airplane"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_setting" />
+        </LinearLayout>
     </HorizontalScrollView>
-    -->
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="status bar"
-        android:textSize="22sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/background_light" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="light "
-        android:textSize="22sp" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_setting" />
+
+        <SeekBar
+            android:id="@+id/menu_light_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:max="100" />
+
+        <TextView
+            android:id="@+id/menu_light_auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="@string/menu_light_auto" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/background_light" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="setting"
-        android:textSize="22sp" />
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:weightSum="2" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4" >
+
+            <!-- 编辑模式，壁纸，小部件，屏幕管理 -->
+
+            <TextView
+                android:id="@+id/menu_tv_edit_mode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_setting"
+                android:gravity="center"
+                android:text="@string/menu_edit_mode" />
+
+            <TextView
+                android:id="@+id/menu_tv_wallpaper"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_wallpaper"
+                android:gravity="center"
+                android:text="@string/menu_wallpaper" />
+
+            <TextView
+                android:id="@+id/menu_tv_widget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_widget"
+                android:gravity="center"
+                android:text="@string/menu_widget" />
+
+            <TextView
+                android:id="@+id/menu_tv_screen_management"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_setting"
+                android:gravity="center"
+                android:text="@string/menu_screen_management" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4" >
+
+            <!-- 问题反馈，版本更新，桌面设置，系统设置 -->
+
+            <TextView
+                android:id="@+id/menu_tv_problem_feedback"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_setting"
+                android:gravity="center"
+                android:text="@string/menu_problem_feedback" />
+
+            <TextView
+                android:id="@+id/menu_tv_version_update"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_setting"
+                android:gravity="center"
+                android:text="@string/menu_version_update" />
+
+            <TextView
+                android:id="@+id/menu_tv_launcher_settings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_setting"
+                android:gravity="center"
+                android:text="@string/menu_launcher_settings" />
+
+            <TextView
+                android:id="@+id/menu_tv_system_settings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_setting"
+                android:gravity="center"
+                android:text="@string/menu_system_settings" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
