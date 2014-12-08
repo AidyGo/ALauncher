@@ -2216,10 +2216,10 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 		// launching, or after the
 		// view has detached (it's possible for this to happen if the view is
 		// removed mid touch).
-		if(mBottomDrawerLayout.isDrawerOpen(Gravity.BOTTOM)) {
+		if (mBottomDrawerLayout.isDrawerOpen(Gravity.BOTTOM)) {
 			return;
 		}
-		
+
 		if (v.getWindowToken() == null) {
 			return;
 		}
@@ -2669,7 +2669,7 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 	}
 
 	public boolean onLongClick(View v) {
-		if(mBottomDrawerLayout.isDrawerOpen(Gravity.BOTTOM)) {
+		if (mBottomDrawerLayout.isDrawerOpen(Gravity.BOTTOM)) {
 			return false;
 		}
 		if (!isDraggingEnabled())
@@ -4545,7 +4545,7 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 			@Override
 			public void onDrawerSlide(View drawerView, float slideOffset) {
 				// TODO Auto-generated method stub
-//				Log.i("aidy", "onDrawerSlide()");
+				// Log.i("aidy", "onDrawerSlide()");
 			}
 
 			@Override
@@ -4568,7 +4568,7 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 		});
 		mDetector = new GestureDetector(this, new BottomGestureListener());
 		mBottomDrawerLayout.setOnTouchListener(new OnTouchListener() {
-			
+
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
@@ -4577,15 +4577,15 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 			}
 		});
 	}
-	
+
 	private GestureDetector mDetector;
-	
+
 	private class BottomGestureListener extends SimpleOnGestureListener {
 
 		@Override
 		public boolean onDown(MotionEvent e) {
 			// TODO Auto-generated method stub
-			if(mBottomDrawerLayout.isDrawerOpen(Gravity.BOTTOM)) {
+			if (mBottomDrawerLayout.isDrawerOpen(Gravity.BOTTOM)) {
 				exitBottomMenu();
 			}
 			return super.onDown(e);
@@ -4600,10 +4600,13 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 	 * 单指上滑的时候，弹出底部菜单
 	 */
 	public void showBottomMenu() {
+		if (mWorkspace.isInOverviewMode() || mState != State.WORKSPACE) {
+			return;
+		}
 		Log.i("aidy", "showBottomMenu()");
 		mBottomDrawerLayout.openDrawer(Gravity.BOTTOM);
 	}
-	
+
 	public void exitBottomMenu() {
 		Log.i("aidy", "exitBottomMenu()");
 		mBottomDrawerLayout.closeDrawer(Gravity.BOTTOM);
