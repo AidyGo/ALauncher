@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <CheckBoxPreference
-        android:summary="test summary"
-        android:title="test title" />
+    <PreferenceCategory android:title="@string/title_base_settings" >
+        <CheckBoxPreference
+            android:key="preference_default_launcher"
+            android:summary="@string/title_setas_default_launcher" />
+
+        <Preference
+            android:key="preferencet_launcher_layout"
+            android:summary="@string/title_launcher_layout" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/title_base_settings" >
+        <Preference
+            android:key="preferencet_theme"
+            android:summary="@string/title_theme" />
+        <Preference
+            android:key="preferencet_wallpaper"
+            android:summary="@string/title_wallpaper" />
+        <Preference
+            android:key="preferencet_icon"
+            android:summary="@string/title_icon" />
+        <Preference
+            android:key="preferencet_effect"
+            android:summary="@string/title_special_effect" />
+        <Preference
+            android:key="preferencet_gesture"
+            android:summary="@string/title_gesture" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/title_about" >
+        <Preference
+            android:key="preferencet_about_system_settings"
+            android:summary="@string/title_about_system_settings" />
+        <Preference
+            android:key="preferencet_about_launcher"
+            android:summary="@string/title_about_launcher" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

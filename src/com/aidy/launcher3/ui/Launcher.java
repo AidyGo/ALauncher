@@ -200,27 +200,16 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 	// The Intent extra that defines whether to ignore the launch animation
 	public static final String INTENT_EXTRA_IGNORE_LAUNCH_ANIMATION = "com.aidy.launcher3.intent.extra.shortcut.INGORE_LAUNCH_ANIMATION";
 
-	// Type: int
 	private static final String RUNTIME_STATE_CURRENT_SCREEN = "launcher.current_screen";
-	// Type: int
 	private static final String RUNTIME_STATE = "launcher.state";
-	// Type: int
 	private static final String RUNTIME_STATE_PENDING_ADD_CONTAINER = "launcher.add_container";
-	// Type: int
 	private static final String RUNTIME_STATE_PENDING_ADD_SCREEN = "launcher.add_screen";
-	// Type: int
 	private static final String RUNTIME_STATE_PENDING_ADD_CELL_X = "launcher.add_cell_x";
-	// Type: int
 	private static final String RUNTIME_STATE_PENDING_ADD_CELL_Y = "launcher.add_cell_y";
-	// Type: boolean
 	private static final String RUNTIME_STATE_PENDING_FOLDER_RENAME = "launcher.rename_folder";
-	// Type: long
 	private static final String RUNTIME_STATE_PENDING_FOLDER_RENAME_ID = "launcher.rename_folder_id";
-	// Type: int
 	private static final String RUNTIME_STATE_PENDING_ADD_SPAN_X = "launcher.add_span_x";
-	// Type: int
 	private static final String RUNTIME_STATE_PENDING_ADD_SPAN_Y = "launcher.add_span_y";
-	// Type: parcelable
 	private static final String RUNTIME_STATE_PENDING_ADD_WIDGET_INFO = "launcher.add_widget_info";
 
 	private static final String TOOLBAR_ICON_METADATA_NAME = "com.android.launcher.toolbar_icon";
@@ -412,12 +401,7 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		if (DEBUG_STRICT_MODE) {
-			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork() // or
-																																	// .detectAll()
-																																	// for
-																																	// all
-																																	// detectable
-																																	// problems
+			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork()
 					.penaltyLog().build());
 			StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectLeakedSqlLiteObjects().detectLeakedClosableObjects()
 					.penaltyLog().penaltyDeath().build());
@@ -457,11 +441,6 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 		mAppWidgetHost = new LauncherAppWidgetHost(this, APPWIDGET_HOST_ID);
 		mAppWidgetHost.startListening();
 
-		// If we are getting an onCreate, we can actually preempt onResume and
-		// unset mPaused here,
-		// this also ensures that any synchronous binding below doesn't
-		// re-trigger another
-		// LauncherModel load.
 		mPaused = false;
 
 		if (PROFILE_STARTUP) {
@@ -492,14 +471,8 @@ public class Launcher extends Activity implements View.OnClickListener, OnLongCl
 
 		if (!mRestoring) {
 			if (sPausedFromUserAction) {
-				// If the user leaves launcher, then we should just load items
-				// asynchronously when
-				// they return.
 				mModel.startLoader(true, -1);
 			} else {
-				// We only load the page synchronously if the user rotates (or
-				// triggers a
-				// configuration change) while launcher is in the foreground
 				mModel.startLoader(true, mWorkspace.getCurrentPage());
 			}
 		}

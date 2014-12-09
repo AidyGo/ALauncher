@@ -330,6 +330,18 @@ s
     <string name="menu_launcher_settings">桌面设置</string>
     <string name="menu_system_settings">系统设置</string>
     <string name="menu_light_auto">自动</string>
+    <string name="title_base_settings">基本设置</string>
+    <string name="title_setas_default_launcher">设为默认桌面</string>
+    <string name="title_launcher_layout">桌面布局</string>
     
-
+    <string name="title_beauty">桌面美化</string>
+    <string name="title_theme">主题</string>
+    <string name="title_wallpaper">壁纸</string>
+    <string name="title_icon">图标</string>
+    <string name="title_special_effect">特效</string>
+    <string name="title_gesture">手势</string>
+    
+    <string name="title_about">关于</string>
+	<string name="title_about_system_settings">系统设置</string>
+	<string name="title_about_launcher">关于桌面</string>
 </resources>
